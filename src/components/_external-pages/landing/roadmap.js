@@ -21,10 +21,13 @@ const ImgResponsive = styled.img`
 const Title = styled.div`
   font: normal normal bold 14px/20px Poppins;
   color: white;
-  letter-spacing: 4px;
+  letter-spacing: 2px;
   line-height: 25px;
   white-space: nowrap;
-  padding-left: 18px;
+  padding-left: 16px;
+  @media (min-width: 768px) {
+    font: normal normal bold 18px/30px Poppins;
+  }
 `;
 
 const Content = styled.div`
@@ -32,6 +35,9 @@ const Content = styled.div`
   color: white;
   text-align: center;
   line-height: 17px;
+  @media (min-width: 768px) {
+    font: normal normal normal 14px/20px Poppins;
+  }
 `;
 
 const ContentMobile = styled.div`
@@ -54,10 +60,10 @@ const Roadmap = () => {
               </h3>
 
               <ContentMobile className="ms-3">
-                -IDO <br />
-                -Launch NFT sale <br />
-                -Release Market <br />
-                -Kickstart Tournament Mode <br />
+                IDO <br />
+                Launch NFT sale <br />
+                Release Market <br />
+                Kickstart Tournament Mode <br />
               </ContentMobile>
             </div>
           </div>
@@ -68,8 +74,8 @@ const Roadmap = () => {
               </h3>
 
               <ContentMobile className="ms-3">
-                -Manager Mode <br />
-                -Release results prediction of football matches
+                Manager Mode <br />
+                Release results prediction of football matches
               </ContentMobile>
             </div>
           </div>
@@ -79,7 +85,7 @@ const Roadmap = () => {
                 <Title>PHASE 3 - Q1 2023</Title>
               </h3>
 
-              <ContentMobile className="ms-3">- Simulation mode</ContentMobile>
+              <ContentMobile className="ms-3">Simulation mode</ContentMobile>
             </div>
           </div>
           <div class="card-x">
@@ -89,7 +95,7 @@ const Roadmap = () => {
               </h3>
 
               <ContentMobile className="ms-3">
-                - 5V5 PVP Ranked Match
+                5V5 PVP Ranked Match
               </ContentMobile>
             </div>
           </div>
@@ -113,10 +119,10 @@ const Roadmap = () => {
                     <div>
                       <Title>PHASE 1 - Q3 2022</Title>
                       <Content>
-                        -IDO <br />
-                        -Launch NFT sale <br />
-                        -Release Market <br />
-                        -Kickstart Tournament Mode <br />
+                        IDO <br />
+                        Launch NFT sale <br />
+                        Release Market <br />
+                        Kickstart Tournament Mode <br />
                       </Content>
                     </div>
                   </WrapperText>
@@ -131,8 +137,8 @@ const Roadmap = () => {
                     <div>
                       <Title>PHASE 2 - Q4 2022</Title>
                       <Content>
-                        -Manager Mode <br />
-                        -Release results prediction of football matches
+                        Manager Mode <br />
+                        Release results prediction of football matches
                       </Content>
                     </div>
                   </WrapperText>
@@ -147,7 +153,7 @@ const Roadmap = () => {
                   <WrapperText>
                     <div>
                       <Title>PHASE 3 - Q1 2023</Title>
-                      <Content>- Simulation mode</Content>
+                      <Content>Simulation mode</Content>
                     </div>
                   </WrapperText>
                 </div>
@@ -161,7 +167,7 @@ const Roadmap = () => {
                   <WrapperText>
                     <div>
                       <Title>PHASE 4 - Q2 2023</Title>
-                      <Content>- 5V5 PVP Ranked Match</Content>
+                      <Content>5V5 PVP Ranked Match</Content>
                     </div>
                   </WrapperText>
                 </div>

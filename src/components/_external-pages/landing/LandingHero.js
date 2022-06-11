@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import flashFill from "@iconify/icons-eva/flash-fill";
 import { Link as RouterLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import "./LandingHero.css";
+
 // material
 import { styled, alpha, useTheme } from "@mui/material/styles";
 import {
@@ -230,7 +232,7 @@ export default function LandingHero() {
                 width: "100%",
                 fontFamily: "inherit",
                 font: "normal normal bold 16px Poppins",
-                whiteSpace: "nowrap"
+                whiteSpace: "nowrap",
                 // fontWeight: "bold",
               }}
             >
@@ -293,7 +295,7 @@ export default function LandingHero() {
                     width: "100%",
                     fontFamily: "inherit",
                     marginTop: 0,
-                    color: "rgba(255, 255, 255, 1)"
+                    color: "rgba(255, 255, 255, 1)",
                   }}
                 >
                   {"Coming soon"}
@@ -470,9 +472,19 @@ export default function LandingHero() {
             </MHidden>
 
             {/* {Info} */}
-            <Grid key={"NFT-Info"} item xs={12} md={6} mt={3}>
-              <MotionInView variants={varFadeInUp}>
-                <CardInfoStyle>
+            <Grid
+              key={"NFT-Info"}
+              item
+              xs={12}
+              md={6}
+              mt={3}
+              style={{ height: "250px !important" }}
+            >
+              <MotionInView
+                variants={varFadeInUp}
+                style={{ height: "250px !important" }}
+              >
+                <CardInfoStyle style={{ height: "250px !important" }}>
                   <Typography
                     style={{
                       fontSize: 40,
@@ -481,10 +493,8 @@ export default function LandingHero() {
                       fontWeight: "bold",
                       font: "normal normal bold 40px Poppins",
                     }}
-                  >
-                    {"EXPLORE REVOLUTIONARY"}
-                  </Typography>
-                  <TitleStyle>{"NFT GAMING"}</TitleStyle>
+                  ></Typography>
+                  <TitleStyle>{"FIFA FOOTBALL"}</TitleStyle>
                   <ContentStyle>
                     {
                       "Our team is excited to announce the launch of FIFA Football with 3D graphics - a world-class blockchain platform created to connect football fans across the globe more deeply with the game they love. The FIFA Football game is in the Play-To-Earn genre, where the coaches manage many different football players called NFTs and control them to take part in the matches."
@@ -513,7 +523,12 @@ export default function LandingHero() {
                 <CardImageStyle>
                   <img
                     src={imageLanding1}
-                    style={{ width: 300, height: 321, marginLeft: 'auto', marginRight: 'auto' }}
+                    style={{
+                      width: 300,
+                      height: 300,
+                      marginLeft: "auto",
+                      marginRight: "auto",
+                    }}
                   />
                 </CardImageStyle>
               </MotionInView>
@@ -534,7 +549,12 @@ export default function LandingHero() {
                 >
                   <img
                     src={imageAvatarTeam}
-                    style={{ width: 369, height: 345 }}
+                    style={{
+                      width: 369,
+                      height: 345,
+                      // marginTop: -20,
+                      // paddingBottom: 20,
+                    }}
                   />
                 </Box>
               </MotionInView>
@@ -550,6 +570,7 @@ export default function LandingHero() {
                       // fontFamily: "inherit",
                       fontWeight: "bold",
                       font: "normal normal bold 40px Poppins",
+                      whiteSpace: "nowrap",
                     }}
                   >
                     {"ADVENTURE THROUGH A"}

@@ -28,7 +28,7 @@ const dataOption = [
     icon: iconOptionPlay1,
     title: "Tournament Mode",
     content:
-      "In this brand-new mode, The Coaches can buy competition tickets on our shop, which allow players to take part in the matches. Every ticket is only valid for 7 days or 28 days. ",
+      "In this brand-new mode, The Coaches can buy competition tickets on our shop, which allow players to take part in the matches.",
   },
   {
     icon: iconOptionPlay2,
@@ -40,19 +40,19 @@ const dataOption = [
     icon: iconOptionPlay5,
     title: "Results prediction of football matches",
     content:
-      "The winning team is the one, who’s made the highest quantity of goals. You can place a bet for your favorite squat following the odds offered by bookmakers. Knowing the strengths and weaknesses of players can offer you a big advantage in live betting.",
+      "You can place a bet for your favorite squat following the odds offered by bookmakers.",
   },
   {
     icon: iconOptionPlay3,
     title: "Simulation mode",
     content:
-      "This mode allows players to create quick matches to play against others in other teams. The Coaches have a chance to show off the skill through arranging and controlling the team. The length of a game in the mode is equivalent to 90 in-game seconds per half. Rewards are awarded to the winning team at the end of a match. Ranking is available in this mode.",
+      "This mode allows players to create quick matches to play against others in other teams.",
   },
   {
     icon: iconOptionPlay4,
     title: "5V5 PVP Ranked Match",
     content:
-      "In this mode, there will be five football players on each team. You can enter the game and choose a unique player from your team that you would like to participate in the match. We apply the latest AI and AR technologies to bring the most exciting and realistic experiences to players. Players will experience a virtual reality called Metaverse.",
+      "In this mode, there will be five football players on each team. You can enter the game and choose a unique player from your team that you would like to participate in the match. ",
   },
 ];
 
@@ -67,7 +67,7 @@ const dataMarketplace = [
     icon: iconOptionPlay7,
     title: "Transfer Market",
     content:
-      "The quantities of players are limited, so there is a place where you can exchange, buy and sell players called Transfer Market. Once you’ve found the player you want to purchase, you can put in a purchase order at a select price. Selling a player works in a similar fashion to purchasing.",
+      "The quantities of players are limited, so there is a place where you can exchange, buy and sell players called Transfer Market.",
   },
 ];
 
@@ -97,7 +97,7 @@ const TitleStyle = styled(Typography)(({ theme }) => ({
   WebkitBackgroundClip: "text",
   WebkitTextFillColor: "transparent",
   // fontWeight: "bold",
-  font: "normal normal bold 40px Poppins"
+  font: "normal normal bold 40px Poppins",
 }));
 
 const IconFC = styled("img")(({ theme }) => ({
@@ -148,7 +148,7 @@ export default function LandingMinimalHelps() {
                     // fontSize: 20,
                     width: "100%",
                     // fontFamily: "inherit",
-                    font: "normal normal bold 20px Poppins"
+                    font: "normal normal bold 20px Poppins",
                   }}
                 >
                   {title}
@@ -160,7 +160,7 @@ export default function LandingMinimalHelps() {
                     // fontSize: 14,
                     width: "100%",
                     // fontFamily: "inherit",
-                    font: "normal normal 14px Poppins"
+                    font: "normal normal 14px Poppins",
                   }}
                 >
                   {content}
@@ -201,7 +201,7 @@ export default function LandingMinimalHelps() {
                   // fontFamily: "inherit",
                   // fontWeight: "bold",
                   marginTop: 20,
-                  font: "normal normal bold 40px Poppins"
+                  font: "normal normal bold 40px Poppins",
                 }}
               >
                 {"ADVENTURE THROUGH A"}
@@ -228,7 +228,7 @@ export default function LandingMinimalHelps() {
                     width: "100%",
                     // fontFamily: "inherit",
                     // fontWeight: "bold",
-                    font: "normal normal bold 40px Poppins"
+                    font: "normal normal bold 40px Poppins",
                   }}
                 >
                   {"GAMEPLAY"}
@@ -260,7 +260,7 @@ export default function LandingMinimalHelps() {
                     width: "100%",
                     // fontFamily: "inherit",
                     // fontWeight: "bold",
-                    font: "normal normal bold 40px Poppins"
+                    font: "normal normal bold 40px Poppins",
                   }}
                 >
                   {"MARKETPLACE"}
@@ -291,10 +291,13 @@ export default function LandingMinimalHelps() {
                     width: "100%",
                     // fontFamily: "inherit",
                     // fontWeight: "bold",
-                    font: "normal normal bold 40px Poppins"
+                    font: "normal normal bold 40px Poppins",
                   }}
                 >
-                  <div style={{ font: "normal normal bold 40px/20px Poppins" }}>
+                  <div
+                    style={{ font: "normal normal bold 40px/20px Poppins" }}
+                    className="text-center text-sm-start"
+                  >
                     OUR <span style={{ color: "#5abc46" }}>ROADMAP</span>
                   </div>
                 </Typography>
@@ -322,7 +325,12 @@ export default function LandingMinimalHelps() {
                     fontWeight: "bold",
                   }}
                 >
-                  <div style={{ font: "normal normal bold 40px/20px Poppins" }}>
+                  <div
+                    style={{
+                      font: "normal normal bold 40px/20px Poppins",
+                    }}
+                    className="text-center text-sm-start"
+                  >
                     OUR <span style={{ color: "#5abc46" }}>TEAM</span>
                   </div>
                 </Typography>
