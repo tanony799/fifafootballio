@@ -3,8 +3,6 @@ import I2 from "./../../../assets/team/2.png";
 import I3 from "./../../../assets/team/3.png";
 import I4 from "./../../../assets/team/4.png";
 import I5 from "./../../../assets/team/5.png";
-import I7 from "./../../../assets/team/7.png";
-import I8 from "./../../../assets/team/8.png";
 import I9 from "./../../../assets/team/9.png";
 import I10 from "./../../../assets/team/10.png";
 
@@ -97,48 +95,6 @@ const Team = () => {
               <Text2 className="content-team">STACK DEVELOPER</Text2>
             </WrapperItem>
           </div>
-          {/* <div className="col">
-            <WrapperItem>
-              <ResponsiveImg src={I7} />
-              <Text1 className="name-team">JELLE</Text1>
-              <Text2 className="content-team">GAME DEVELOPER</Text2>
-            </WrapperItem>
-          </div>
-          <div className="col">
-            <WrapperItem>
-              <ResponsiveImg src={I8} />
-              <Text1 className="name-team">KASPARS</Text1>
-              <Text2 className="content-team">FULL STACK DEVELOPER</Text2>
-            </WrapperItem>
-          </div> */}
-          {/*  <div className="col">
-            <WrapperItem>
-              <ResponsiveImg src={I9} />
-              <Text1>DOMINIC</Text1>
-              <Text2>FINANCIAL SUPPORT</Text2>
-            </WrapperItem>
-          </div>
-          <div className="col">
-            <WrapperItem>
-              <ResponsiveImg src={I10} />
-              <Text1>KAREEM</Text1>
-              <Text2>PARTNERSHIP LEAD</Text2>
-            </WrapperItem>
-          </div>
-          <div className="col">
-            <WrapperItem>
-              <ResponsiveImg src={I11} />
-              <Text1>KIMBERLEY</Text1>
-              <Text2>GROWTH HACKER</Text2>
-            </WrapperItem>
-          </div>
-          <div className="col ">
-            <WrapperItem>
-              <ResponsiveImg src={I12} />
-              <Text1>LARS</Text1>
-              <Text2>COMMUNITY SUPPORT</Text2>
-            </WrapperItem>
-          </div> */}
         </div>
       </div>
     </Wrapper>

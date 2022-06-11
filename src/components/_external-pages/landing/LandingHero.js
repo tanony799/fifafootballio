@@ -1,7 +1,4 @@
-import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
-import flashFill from "@iconify/icons-eva/flash-fill";
-import { Link as RouterLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./LandingHero.css";
 
@@ -10,21 +7,13 @@ import { styled, alpha, useTheme } from "@mui/material/styles";
 import {
   Button,
   Box,
-  Link,
   Container,
   Typography,
-  Stack,
   Grid,
   Card,
   useMediaQuery,
 } from "@mui/material";
-import {
-  varFadeIn,
-  varFadeInUp,
-  varWrapEnter,
-  varFadeInRight,
-  MotionInView,
-} from "../../animate";
+import { varFadeInUp, varWrapEnter, MotionInView } from "../../animate";
 import { MHidden } from "../../../components/@material-extend";
 // icon backgroud
 import backGroundIcon from "../../../assets/icons/back-ground-landing.png";
@@ -42,6 +31,7 @@ import iconPlay from "../../../assets/icons/play.png";
 import iconIOS from "../../../assets/icons/ios.png";
 import iconAndroid from "../../../assets/icons/android.png";
 import iconDesktop from "../../../assets/icons/desktop.png";
+import autoMergeLevel1 from "redux-persist/es/stateReconciler/autoMergeLevel1";
 
 // ----------------------------------------------------------------------
 
@@ -228,12 +218,10 @@ export default function LandingHero() {
             <img src={icon} style={{ height: 16, width: 10, marginRight: 5 }} />
             <Typography
               style={{
-                // fontSize: 16,
                 width: "100%",
                 fontFamily: "inherit",
                 font: "normal normal bold 16px Poppins",
                 whiteSpace: "nowrap",
-                // fontWeight: "bold",
               }}
             >
               {title}
@@ -254,7 +242,7 @@ export default function LandingHero() {
       iconWidth = 32,
     } = item || {};
     return (
-      <div style={{ width: 180, height: 48 }}>
+      <div style={{ width: 180, height: 48 }} className="mx-auto">
         <ButtonAction backGroundCus={backGroundBtn}>
           <Box
             sx={{
@@ -263,6 +251,7 @@ export default function LandingHero() {
               justifyContent: "center",
               alignItems: "center",
               alignContent: "center",
+
             }}
           >
             <img
@@ -327,6 +316,7 @@ export default function LandingHero() {
                           marginRight: 10,
                           marginLeft: 10,
                         }}
+                        alt="icon-home"
                       />
                       <Typography
                         style={{ font: "normal normal bold 18px Poppins" }}
@@ -344,6 +334,7 @@ export default function LandingHero() {
                           marginRight: 10,
                           marginLeft: 10,
                         }}
+                        alt="icon-play-game"
                       />
                       <Typography
                         style={{ font: "normal normal bold 18px Poppins" }}
@@ -360,6 +351,7 @@ export default function LandingHero() {
                           marginRight: 10,
                           marginLeft: 10,
                         }}
+                        alt="icon-shop"
                       />
                       <Typography
                         style={{ font: "normal normal bold 18px Poppins" }}
@@ -376,6 +368,7 @@ export default function LandingHero() {
                           marginRight: 10,
                           marginLeft: 10,
                         }}
+                        alt="icon-market"
                       />
                       <Typography
                         style={{ font: "normal normal bold 18px Poppins" }}
@@ -392,6 +385,7 @@ export default function LandingHero() {
                           marginRight: 10,
                           marginLeft: 10,
                         }}
+                        alt="icon-ido"
                       />
                       <Typography
                         style={{ font: "normal normal bold 18px Poppins" }}
@@ -408,6 +402,7 @@ export default function LandingHero() {
                           marginRight: 10,
                           marginLeft: 10,
                         }}
+                        alt="icon-nfts"
                       />
                       <Typography
                         style={{ font: "normal normal bold 18px Poppins" }}
@@ -424,6 +419,7 @@ export default function LandingHero() {
                         }}
                         className="d-flex"
                         target="_blank"
+                        rel="noreferrer"
                       >
                         <img
                           src={iconContact}
@@ -434,6 +430,7 @@ export default function LandingHero() {
                             marginLeft: 10,
                           }}
                           className="my-auto"
+                          alt="iconContact"
                         />
                         <Typography
                           style={{
@@ -471,25 +468,13 @@ export default function LandingHero() {
               </Grid>
             </MHidden>
 
-            {/* {Info} */}
-            <Grid
-              key={"NFT-Info"}
-              item
-              xs={12}
-              md={6}
-              mt={3}
-              style={{ height: "250px !important" }}
-            >
-              <MotionInView
-                variants={varFadeInUp}
-                style={{ height: "250px !important" }}
-              >
-                <CardInfoStyle style={{ height: "250px !important" }}>
+            <Grid key={"NFT-Info"} item xs={12} md={6} mt={3}>
+              <MotionInView variants={varFadeInUp}>
+                <CardInfoStyle>
                   <Typography
                     style={{
                       fontSize: 40,
                       width: "100%",
-                      // fontFamily: "inherit",
                       fontWeight: "bold",
                       font: "normal normal bold 40px Poppins",
                     }}
@@ -517,27 +502,27 @@ export default function LandingHero() {
                 </CardInfoStyle>
               </MotionInView>
             </Grid>
-            {/* {Avatar} */}
             <Grid key={"NFT-Avatar"} item xs={12} md={3}>
               <MotionInView variants={varFadeInUp}>
                 <CardImageStyle>
                   <img
                     src={imageLanding1}
                     style={{
-                      width: 300,
-                      height: 300,
+                      width: "100%",
+                      height: "auto",
                       marginLeft: "auto",
                       marginRight: "auto",
+                      marginTop: 20,
+                      marginBottom: 30
                     }}
+                    alt="imageLanding1"
                   />
                 </CardImageStyle>
               </MotionInView>
             </Grid>
           </Grid>
           <Grid container spacing={isDesktop ? 10 : 5}>
-            {/* {Menu item} */}
             <Grid key={"NFT-MenuItem-Blank"} item xs={12} md={3}></Grid>
-            {/* {Avatar team} */}
             <Grid key={"NFT-AvatarTeam"} item xs={12} md={4} padding={0}>
               <MotionInView variants={varFadeInUp}>
                 <Box
@@ -550,11 +535,13 @@ export default function LandingHero() {
                   <img
                     src={imageAvatarTeam}
                     style={{
-                      width: 369,
-                      height: 345,
-                      // marginTop: -20,
-                      // paddingBottom: 20,
+                      width: "100%",
+                      height: "auto",
+                      marginTop: -70,
+                      paddingBottom: 50,
                     }}
+                    className="img-team"
+                    alt="imgaeava-team"
                   />
                 </Box>
               </MotionInView>
@@ -565,23 +552,20 @@ export default function LandingHero() {
                 <Box>
                   <Typography
                     style={{
-                      // fontSize: 40,
                       width: "100%",
-                      // fontFamily: "inherit",
                       fontWeight: "bold",
                       font: "normal normal bold 40px Poppins",
-                      whiteSpace: "nowrap",
                     }}
                   >
                     {"ADVENTURE THROUGH A"}
                   </Typography>
                   <TitleStyle>{"2D UNIVERSE"}</TitleStyle>
-                  <ContentStyle>
+                  <ContentStyle className="mb-sm-0 mb-4">
                     {
                       "Connect your wallet, play with your friends and socialize while making money. Whether you are solely trading your characters or rooms on the marketplace or you are more interested in battling with friends, Fifa Football has it all. Landsale coming soon!"
                     }
                   </ContentStyle>
-                  <Grid container spacing={2} sx={{ marginBottom: 10 }}>
+                  <Grid container spacing={isDesktop ? 4 : 2}sx={{ marginBottom: 10 }}>
                     <Grid key={"NFT-btn-IOS"} item xs={12} md={4}>
                       {renderBtnDevices({
                         icon: iconIOS,
