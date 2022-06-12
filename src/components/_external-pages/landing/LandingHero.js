@@ -447,13 +447,14 @@ export default function LandingHero() {
               </Grid>
             </MHidden>
             {/* Button connect wallet */}
-            <MHidden width="mdUp">
+            <MHidden width="mdUp" >
               <Grid
                 item
                 key={"Button-connect-wallet"}
                 container
                 direction="row"
                 justifyContent="flex-end"
+                className="d-sm-block d-none"
               >
                 <Button
                   variant="contained"
