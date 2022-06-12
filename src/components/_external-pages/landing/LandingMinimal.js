@@ -11,6 +11,7 @@ import {
 
 import { Roadmap } from "./roadmap";
 import { Team } from "./team";
+import { Footer } from "./footer";
 
 //
 import { varFadeInUp, MotionInView, varFadeInDown } from "../../animate";
@@ -336,6 +337,9 @@ export default function LandingMinimalHelps() {
                 </Typography>
               </Box>
               <Team />
+            </MotionInView>
+            <MotionInView variants={varFadeInUp}>
+              <Footer />
             </MotionInView>
           </Grid>
         </Grid>
