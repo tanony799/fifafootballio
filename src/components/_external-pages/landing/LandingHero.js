@@ -376,7 +376,7 @@ export default function LandingHero() {
                         {"MARKETPLACE"}
                       </Typography>
                     </MenuItemStyle>
-                    <MenuItemStyle onClick={() => navigate("/ido")}>
+                    <MenuItemStyle onClick={() => navigate("/")}>
                       <img
                         src={iconIdo}
                         style={{

@@ -90,7 +90,7 @@ const menuPage = [
   { title: "PLAY GAME", pathName: "/play-game", icon: iconPlayGame },
   { title: "SHOP", pathName: "/shop", icon: iconShop },
   { title: "MARKETPLACE", pathName: "/market", icon: iconMarket },
-  { title: "IDO", pathName: "/ido", icon: iconIdo },
+  { title: "IDO", pathName: "/", icon: iconIdo },
   { title: "MY NFTS", pathName: "/my-nft", icon: iconMyNFTS },
   { title: "CONTACT", pathName: "/contact", icon: iconContact },
 ];
