@@ -15,7 +15,7 @@ import {
 import youtubeIcon from "../../assets/icons/youtube.svg";
 import reditIcon from "../../assets/icons/reddit.svg";
 import mediumIcon from "../../assets/icons/medium.svg";
-import facebookIcon from "../../assets/icons/facebook.svg";
+import facebookIcon from "../../assets/icons/Facebook.svg";
 import telegramIcon from "../../assets/icons/tele.svg";
 import twitterIcon from "../../assets/icons/twitter.svg";
 
