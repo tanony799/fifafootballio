@@ -1,21 +1,15 @@
 import React from "react";
-import youtubeIcon from "./../../../assets/icons/youtube.svg";
-import reditIcon from "./../../../assets/icons/reddit.svg";
-import mediumIcon from "./../../../assets/icons/medium.svg";
-import facebookIcon from "./../../../assets/icons/Facebook.svg";
-import telegramIcon from "./../../../assets/icons/tele.svg";
-import twitterIcon from "./../../../assets/icons/twitter.svg";
-import logo from "./../../../assets/icons/logo.png";
+import youtubeIcon from "../../assets/icons/youtube.svg";
+import reditIcon from "../../assets/icons/reddit.svg";
+import mediumIcon from "../../assets/icons/medium.svg";
+import facebookIcon from "../../assets/icons/Facebook.svg";
+import telegramIcon from "../../assets/icons/tele.svg";
+import twitterIcon from "../../assets/icons/twitter.svg";
+import logo from "../../assets/icons/logo.png";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  padding-bottom: 50px;
-  padding-top: 50px;
 
-  @media (max-width: 576px) {
-    padding-top: 20px;
-    padding-bottom: 50px;
-  }
 `;
 
 const Icon = styled.img`
@@ -48,7 +42,7 @@ const Text = styled.div`
   }
 `;
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <Wrapper>
       <div className="container">
@@ -92,3 +86,5 @@ export const Footer = () => {
     </Wrapper>
   );
 };
+
+export default Footer;

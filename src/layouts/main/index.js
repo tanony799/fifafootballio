@@ -20,6 +20,7 @@ export default function MainLayout() {
       <div>
         <Outlet />
       </div>
+      <MainFooter/>
     </>
   );
 }

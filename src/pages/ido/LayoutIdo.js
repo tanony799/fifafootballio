@@ -358,7 +358,7 @@ export default function LayoutIdo() {
               </Grid>
             </MHidden>
             {/* Button connect wallet */}
-            <MHidden width="mdUp">
+            {/* <MHidden width="mdUp">
               <Grid
                 item
                 key={"Button-connect-wallet"}
@@ -374,10 +374,10 @@ export default function LayoutIdo() {
                       "-webkit-linear-gradient(112deg, rgba(141, 198, 63, 1) 0%, rgba(57, 181, 74, 1) 100%)",
                   }}
                 >
-                  CONNECT WALLET
+                  CONNECT WALL
                 </Button>
               </Grid>
-            </MHidden>
+            </MHidden> */}
 
             {/* {Info} */}
             <Grid key={"NFT-Info"} item xs={12} md={8} mt={3}>
