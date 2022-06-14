@@ -70,11 +70,11 @@ const MenuItemStyle = styled("div")(({ theme }) => ({
 
 const MenuItemContainer = styled("div")(({ isFocus }) => ({
   display: "flex",
-  backgroundColor: isFocus
-    ? ""
-    : "#212B36",
+  backgroundColor: isFocus ? "" : "#212B36",
   borderRadius: "9px",
-  background: isFocus ? "-webkit-linear-gradient(112deg, rgba(141, 198, 63, 1) 0%, rgba(57, 181, 74, 1) 100%)" : "",
+  background: isFocus
+    ? "-webkit-linear-gradient(112deg, rgba(141, 198, 63, 1) 0%, rgba(57, 181, 74, 1) 100%)"
+    : "",
   justifyContent: "flex-start",
   alignItems: "center",
   padding: 5,
@@ -90,9 +90,9 @@ const menuPage = [
   { title: "PLAY GAME", pathName: "/play-game", icon: iconPlayGame },
   { title: "SHOP", pathName: "/shop", icon: iconShop },
   { title: "MARKETPLACE", pathName: "/market", icon: iconMarket },
-  { title: "IDO", pathName: "/", icon: iconIdo },
+  { title: "IDO", pathName: "/idos", icon: iconIdo },
   { title: "MY NFTS", pathName: "/my-nft", icon: iconMyNFTS },
-  { title: "CONTACT", pathName: "/contact", icon: iconContact },
+  { title: "INTRODUCTION", pathName: "/intro", icon: iconContact },
 ];
 
 // ----------------------------------------------------------------------
@@ -156,21 +156,61 @@ export default function MenuMobile({ isOffset, isHome, navConfig }) {
           <List sx={{ padding: 2 }}>
             {menuPage.map(({ title, icon, pathName }) => {
               return (
-                <MenuItemContainer key={`menu-item-${pathName}`} isFocus={pathName === pathname} onClick={() => navigate(pathName)}>
-                  <img
-                    src={icon}
-                    style={{
-                      width: 14,
-                      height: 12,
-                      marginRight: 10,
-                      marginLeft: 10,
-                    }}
-                  />
-                  <Typography
-                    style={{ font: "normal normal bold 14px Poppins" }}
-                  >
-                    {title}
-                  </Typography>
+                <MenuItemContainer
+                  key={`menu-item-${pathName}`}
+                  isFocus={pathName === pathname}
+                  onClick={() =>
+                    title === "INTRODUCTION" ? null : navigate(pathName)
+                  }
+                >
+                  {title === "INTRODUCTION" ? (
+                    <a
+                      href="https://docs.fifafootball.io"
+                      style={{
+                        textDecoration: "none",
+                        color: "#ffffff",
+                      }}
+                      className="d-flex"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <img
+                        src={icon}
+                        style={{
+                          width: 14,
+                          height: 12,
+                          marginRight: 10,
+                          marginLeft: 10,
+                        }}
+                        className="my-auto"
+                        alt="iconContact"
+                      />
+
+                      <Typography
+                        style={{ font: "normal normal bold 14px Poppins" }}
+                      >
+                        {title}
+                      </Typography>
+                    </a>
+                  ) : (
+                    <>
+                      <img
+                        src={icon}
+                        style={{
+                          width: 14,
+                          height: 12,
+                          marginRight: 10,
+                          marginLeft: 10,
+                        }}
+                      />
+
+                      <Typography
+                        style={{ font: "normal normal bold 14px Poppins" }}
+                      >
+                        {title}
+                      </Typography>
+                    </>
+                  )}
                 </MenuItemContainer>
               );
             })}
