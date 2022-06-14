@@ -114,11 +114,21 @@ export default function MainNavbar() {
             </Button>
           </MHidden>
           <MHidden width="mdUp">
-            <MenuMobileCustom
+            <Button
+              variant="contained"
+              style={{
+                font: "normal normal bold 10px Poppins",
+                background:
+                  "-webkit-linear-gradient(112deg, rgba(141, 198, 63, 1) 0%, rgba(57, 181, 74, 1) 100%)",
+              }}
+            >
+              CONNECT WALLET
+            </Button>
+            {/* <MenuMobileCustom
               isOffset={isOffset}
               isHome={isHome}
               navConfig={navMobileConfig}
-            />
+            /> */}
           </MHidden>
         </Container>
       </ToolbarStyle>
