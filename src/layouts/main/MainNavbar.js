@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 // material
 import { styled } from "@mui/material/styles";
@@ -14,6 +15,7 @@ import MenuMobileCustom from "./MenuMobileCustom";
 import MenuMobile from "./MenuMobile";
 import navConfig from "./MenuConfig";
 import navMobileConfig from "./MenuMobileConfig";
+import metaStorage from "./../../context/Provider";
 
 // ----------------------------------------------------------------------
 
@@ -47,6 +49,7 @@ const ToolbarShadowStyle = styled("div")(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function MainNavbar() {
+  const _meta = useContext(metaStorage);
   const isOffset = useOffSetTop(100);
   const { pathname } = useLocation();
   const isHome = pathname === "/";
