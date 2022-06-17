@@ -7,6 +7,8 @@
     "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "t": "node --experimental-modules ./src/web3/login.mjs",
+    "u": "node --experimental-modules ./src/web3/utils.mjs",
     "eject": "react-scripts eject",
     "lint": "eslint --ext .js,.jsx ./src",
     "lint:fix": "eslint --fix --ext .js,.jsx ./src"
@@ -130,6 +132,7 @@
     "typescript": "^4.3.5",
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.0",
+    "web3": "^1.7.3",
     "worker-loader": "^3.0.8",
     "yup": "^0.32.9"
   },

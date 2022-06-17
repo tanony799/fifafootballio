@@ -16,6 +16,9 @@ import MenuMobile from "./MenuMobile";
 import navConfig from "./MenuConfig";
 import navMobileConfig from "./MenuMobileConfig";
 import metaStorage from "./../../context/Provider";
+import { getBalance, getChainId, initWeb3 } from "./../../web3/login.mjs";
+import { hexToNumber } from "./../../web3/utils.mjs";
+import { CHAIN_ID } from "./../../const/const";
 
 // ----------------------------------------------------------------------
 
@@ -53,6 +56,40 @@ export default function MainNavbar() {
   const isOffset = useOffSetTop(100);
   const { pathname } = useLocation();
   const isHome = pathname === "/";
+
+  const connectMeta = () => {
+    if (typeof window.ethereum === "undefined") {
+      window.alert("MetaMask isnot installed!");
+      return;
+    }
+
+    if (_meta.isConnected) return;
+
+    window.ethereum
+      .request({ method: "eth_requestAccounts" })
+      .then((e) => {
+        _meta.setIsConnected(true);
+        _meta.setAddress(e[0]);
+        getChainId(initWeb3(window)).then((_chainId) => {
+          _meta.setChainId(hexToNumber(_chainId));
+          if (hexToNumber(_chainId) === CHAIN_ID)
+            getBalance(initWeb3(window), e[0]).then((_balance) =>
+              _meta.setBalance(Number(_balance) / Math.pow(10, 18))
+            );
+        });
+      })
+      .catch((e) => {
+        console.log("login fail");
+      });
+  };
+
+  const formatAddress = (_address) => {
+    return (
+      _address.slice(0, 4) +
+      `...` +
+      _address.slice(_address.length - 4, _address.length)
+    );
+  };
 
   return (
     <AppBar sx={{ boxShadow: 0, bgcolor: "transparent" }}>
@@ -106,6 +143,7 @@ export default function MainNavbar() {
           {/* <Button variant="contained" target="_blank" href="https://material-ui.com/store/items/minimal-dashboard/"> */}
           <MHidden width="mdDown">
             <Button
+              onClick={() => connectMeta()}
               variant="contained"
               style={{
                 font: "normal normal bold 14px Poppins",
@@ -113,11 +151,18 @@ export default function MainNavbar() {
                   "-webkit-linear-gradient(112deg, rgba(141, 198, 63, 1) 0%, rgba(57, 181, 74, 1) 100%)",
               }}
             >
-              CONNECT WALLET
+              {_meta.chainId !== CHAIN_ID ? (
+                <span className="text-warning">Wrong Network!</span>
+              ) : _meta.isConnected ? (
+                formatAddress(_meta.address)
+              ) : (
+                `CONNECT WALLET`
+              )}
             </Button>
           </MHidden>
           <MHidden width="mdUp">
             <Button
+              onClick={() => connectMeta()}
               variant="contained"
               style={{
                 font: "normal normal bold 10px Poppins",
@@ -125,7 +170,13 @@ export default function MainNavbar() {
                   "-webkit-linear-gradient(112deg, rgba(141, 198, 63, 1) 0%, rgba(57, 181, 74, 1) 100%)",
               }}
             >
-              CONNECT WALLET
+              {_meta.chainId !== CHAIN_ID ? (
+                <span className="text-warning">Wrong Network!</span>
+              ) : _meta.isConnected ? (
+                formatAddress(_meta.address)
+              ) : (
+                `CONNECT WALLET`
+              )}
             </Button>
             {/* <MenuMobileCustom
               isOffset={isOffset}
