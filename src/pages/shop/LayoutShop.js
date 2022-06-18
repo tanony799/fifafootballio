@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { styled, alpha, useTheme } from "@mui/material/styles";
@@ -24,6 +24,7 @@ import iconShop from "../../assets/icons/shop.png";
 import iconMarket from "../../assets/icons/market.png";
 import iconIdo from "../../assets/icons/ido.png";
 import iconMyNFTS from "../../assets/icons/my-nfts.png";
+import { BodyShop } from "./BodyShop";
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
   position: "relative",
@@ -122,6 +123,7 @@ export default function LayoutIdo() {
                           marginRight: 10,
                           marginLeft: 10,
                         }}
+                        alt="iconContact"
                       />
                       <Typography
                         style={{ font: "normal normal bold 18px Poppins" }}
@@ -138,6 +140,7 @@ export default function LayoutIdo() {
                           marginRight: 10,
                           marginLeft: 10,
                         }}
+                        alt="iconContact"
                       />
                       <Typography
                         style={{ font: "normal normal bold 18px Poppins" }}
@@ -154,6 +157,7 @@ export default function LayoutIdo() {
                           marginRight: 10,
                           marginLeft: 10,
                         }}
+                        alt="iconContact"
                       />
                       <Typography
                         style={{ font: "normal normal bold 18px Poppins" }}
@@ -170,6 +174,7 @@ export default function LayoutIdo() {
                           marginRight: 10,
                           marginLeft: 10,
                         }}
+                        alt="iconContact"
                       />
                       <Typography
                         style={{ font: "normal normal bold 18px Poppins" }}
@@ -186,6 +191,7 @@ export default function LayoutIdo() {
                           marginRight: 10,
                           marginLeft: 10,
                         }}
+                        alt="iconContact"
                       />
                       <Typography
                         style={{ font: "normal normal bold 18px Poppins" }}
@@ -202,6 +208,7 @@ export default function LayoutIdo() {
                           marginRight: 10,
                           marginLeft: 10,
                         }}
+                        alt="iconContact"
                       />
                       <Typography
                         style={{ font: "normal normal bold 18px Poppins" }}
@@ -248,9 +255,7 @@ export default function LayoutIdo() {
 
             <Grid key={"NFT-Info"} item xs={12} md={8} mt={3}>
               <MotionInView variants={varFadeInUp}>
-               
-              {/* YOUR CODE HERE */}
-
+                <BodyShop />
               </MotionInView>
             </Grid>
           </Grid>
