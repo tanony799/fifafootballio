@@ -9,10 +9,7 @@ import {
   Grid,
   Card,
   useMediaQuery,
-  Divider,
 } from "@mui/material";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputAdornment from "@mui/material/InputAdornment";
 import {
   varFadeInUp,
   varWrapEnter,
@@ -27,7 +24,6 @@ import iconShop from "../../assets/icons/shop.png";
 import iconMarket from "../../assets/icons/market.png";
 import iconIdo from "../../assets/icons/ido.png";
 import iconMyNFTS from "../../assets/icons/my-nfts.png";
-import iconDollar from "../../assets/icons/dollar.png";
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
   position: "relative",
@@ -74,24 +70,6 @@ const CardStyle = styled(Card)(({ theme }) => {
   };
 });
 
-const CardInfoStyle = styled(Card)(({ theme }) => {
-  const shadowCard = (opacity) =>
-    theme.palette.mode === "light"
-      ? alpha(theme.palette.grey[500], opacity)
-      : alpha(theme.palette.common.black, opacity);
-  return {
-    minHeight: 450,
-    margin: "auto",
-    textAlign: "center",
-    opacity: 0.6,
-    padding: theme.spacing(2),
-    [theme.breakpoints.up("md")]: {
-      backgroundColor: "rgba(9, 20, 48, 1)",
-      boxShadow: `-40px 40px 80px 0 ${shadowCard(0.4)}`,
-    },
-  };
-});
-
 const MenuItemShopStyle = styled("div")(({ theme }) => ({
   display: "flex",
   borderRadius: "9px",
@@ -121,88 +99,10 @@ const MenuItemStyle = styled("div")(({ theme }) => ({
   },
 }));
 
-const ButtonAction = styled(Box)(({ backGroundCus }) => ({
-  display: "flex",
-  borderRadius: "9px",
-  width: "100%",
-  height: "100%",
-  direction: "row",
-  justifyContent: "center",
-  alignItems: "center",
-  textAlign: "center",
-  marginTop: 10,
-  marginBottom: 5,
-  padding: 10,
-  background: `${backGroundCus}`,
-  "&:hover": {
-    opacity: 0.48,
-    textDecoration: "none",
-  },
-}));
-
-const SpaceBetweenContainer = styled("div")(({ theme }) => ({
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  marginTop: theme.spacing(2),
-}));
-
-const AmountTranferContainer = styled("div")(({ theme }) => ({
-  display: "flex",
-  direction: "column",
-}));
-
-const FormContainer = styled("div")(({ theme }) => ({
-  margin: theme.spacing(3),
-}));
-
 export default function LayoutIdo() {
   const theme = useTheme();
-  const isLight = theme.palette.mode === "light";
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
   const navigate = useNavigate();
-  const [valAmount, setValAmount] = useState("");
-
-  const handleChangeInput = (e) => {
-    setValAmount(e.target.value);
-  };
-
-  const renderBtnAction = (item) => {
-    const { icon, title, backGroundBtn } = item || {};
-    return (
-      <div
-        style={{
-          width: "100%",
-          height: 48,
-          marginBottom: theme.spacing(2),
-          marginTop: theme.spacing(2),
-        }}
-      >
-        <ButtonAction backGroundCus={backGroundBtn}>
-          <Box
-            sx={{
-              display: "flex",
-              direction: "row",
-              justifyContent: "center",
-              alignItems: "center",
-              alignContent: "center",
-            }}
-          >
-            <img src={icon} style={{ height: 16, width: 10, marginRight: 5 }} />
-            <Typography
-              style={{
-                width: "100%",
-                fontFamily: "inherit",
-                font: "normal normal bold 16px Poppins",
-              }}
-            >
-              {title}
-            </Typography>
-          </Box>
-        </ButtonAction>
-      </div>
-    );
-  };
 
   return (
     <>
