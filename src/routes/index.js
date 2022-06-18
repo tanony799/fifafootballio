@@ -1,8 +1,6 @@
 import { Suspense, lazy } from 'react';
 import { Navigate, useRoutes, useLocation } from 'react-router-dom';
-// layouts
 import MainLayout from '../layouts/main';
-// components
 import LoadingScreen from '../components/LoadingScreen';
 
 // ----------------------------------------------------------------------
@@ -35,13 +33,13 @@ const Loadable = (Component) => (props) => {
 
 export default function Router() {
   return useRoutes([
-    // Main Routes
     {
       path: '/',
       element: <MainLayout />,
       children: [
         { element: <LandingPage /> },
         { path: 'ido', element: <IdoPage /> },
+        { path: 'shop', element: <ShopPage /> },
         { path: '404', element: <NotFound /> },
       ]
     },
@@ -49,9 +47,7 @@ export default function Router() {
   ]);
 }
 
-// IMPORT COMPONENTS
-
-// Main
 const LandingPage = Loadable(lazy(() => import('../pages/LandingPage')));
 const IdoPage = Loadable(lazy(() => import('../pages/ido')));
+const ShopPage = Loadable(lazy(() => import('../pages/shop')));
 const NotFound = Loadable(lazy(() => import('../pages/Page404')));

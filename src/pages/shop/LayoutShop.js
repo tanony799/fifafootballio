@@ -26,6 +26,7 @@ import iconPlayGame from "../../assets/icons/game.png";
 import iconShop from "../../assets/icons/shop.png";
 import iconMarket from "../../assets/icons/market.png";
 import iconIdo from "../../assets/icons/ido.png";
+import iconMyNFTS from "../../assets/icons/my-nfts.png";
 import iconDollar from "../../assets/icons/dollar.png";
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
@@ -91,7 +92,7 @@ const CardInfoStyle = styled(Card)(({ theme }) => {
   };
 });
 
-const MenuItemIdoStyle = styled("div")(({ theme }) => ({
+const MenuItemShopStyle = styled("div")(({ theme }) => ({
   display: "flex",
   borderRadius: "9px",
   justifyContent: "flex-start",
@@ -157,6 +158,7 @@ const FormContainer = styled("div")(({ theme }) => ({
 
 export default function LayoutIdo() {
   const theme = useTheme();
+  const isLight = theme.palette.mode === "light";
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
   const navigate = useNavigate();
   const [valAmount, setValAmount] = useState("");
@@ -186,11 +188,7 @@ export default function LayoutIdo() {
               alignContent: "center",
             }}
           >
-            <img
-              src={icon}
-              style={{ height: 16, width: 10, marginRight: 5 }}
-              alt="null"
-            />
+            <img src={icon} style={{ height: 16, width: 10, marginRight: 5 }} />
             <Typography
               style={{
                 width: "100%",
@@ -224,7 +222,6 @@ export default function LayoutIdo() {
                           marginRight: 10,
                           marginLeft: 10,
                         }}
-                        alt="iconhome"
                       />
                       <Typography
                         style={{ font: "normal normal bold 18px Poppins" }}
@@ -241,7 +238,6 @@ export default function LayoutIdo() {
                           marginRight: 10,
                           marginLeft: 10,
                         }}
-                        alt="iconplaygame"
                       />
                       <Typography
                         style={{ font: "normal normal bold 18px Poppins" }}
@@ -249,7 +245,7 @@ export default function LayoutIdo() {
                         {"PLAY GAME"}
                       </Typography>
                     </MenuItemStyle>
-                    <MenuItemStyle>
+                    <MenuItemShopStyle>
                       <img
                         src={iconShop}
                         style={{
@@ -258,14 +254,13 @@ export default function LayoutIdo() {
                           marginRight: 10,
                           marginLeft: 10,
                         }}
-                        alt="iconshop"
                       />
                       <Typography
                         style={{ font: "normal normal bold 18px Poppins" }}
                       >
                         {"SHOP"}
                       </Typography>
-                    </MenuItemStyle>
+                    </MenuItemShopStyle>
                     <MenuItemStyle>
                       <img
                         src={iconMarket}
@@ -275,7 +270,6 @@ export default function LayoutIdo() {
                           marginRight: 10,
                           marginLeft: 10,
                         }}
-                        alt="iconmarket"
                       />
                       <Typography
                         style={{ font: "normal normal bold 18px Poppins" }}
@@ -283,7 +277,7 @@ export default function LayoutIdo() {
                         {"MARKETPLACE"}
                       </Typography>
                     </MenuItemStyle>
-                    <MenuItemIdoStyle>
+                    <MenuItemStyle>
                       <img
                         src={iconIdo}
                         style={{
@@ -292,14 +286,29 @@ export default function LayoutIdo() {
                           marginRight: 10,
                           marginLeft: 10,
                         }}
-                        alt="iconido"
                       />
                       <Typography
                         style={{ font: "normal normal bold 18px Poppins" }}
                       >
                         {"IDO"}
                       </Typography>
-                    </MenuItemIdoStyle>
+                    </MenuItemStyle>
+                    <MenuItemStyle>
+                      <img
+                        src={iconMyNFTS}
+                        style={{
+                          width: 18,
+                          height: 16,
+                          marginRight: 10,
+                          marginLeft: 10,
+                        }}
+                      />
+                      <Typography
+                        style={{ font: "normal normal bold 18px Poppins" }}
+                      >
+                        {"MY NFTS"}
+                      </Typography>
+                    </MenuItemStyle>
                     <MenuItemStyle>
                       <a
                         href="https://docs.fifafootball.io"
@@ -339,130 +348,9 @@ export default function LayoutIdo() {
 
             <Grid key={"NFT-Info"} item xs={12} md={8} mt={3}>
               <MotionInView variants={varFadeInUp}>
-                <CardInfoStyle>
-                  <FormContainer>
-                    <Typography
-                      style={{
-                        width: "100%",
-                        fontWeight: "bold",
-                        font: "normal normal bold 40px Poppins",
-                      }}
-                    >
-                      {"ROUND A OF SALE"}
-                    </Typography>
-                    <SpaceBetweenContainer>
-                      <Typography
-                        style={{
-                          fontSize: 20,
-                          width: "100%",
-                          fontWeight: "bold",
-                          font: "normal normal bold 20px Poppins",
-                          textAlign: "left",
-                        }}
-                      >
-                        {"Amount"}
-                      </Typography>
-                      <Typography
-                        style={{
-                          width: "100%",
-                          fontWeight: "bold",
-                          font: "normal normal bold 20px Poppins",
-                          color: "#86c540",
-                          textAlign: "right",
-                        }}
-                      >
-                        {`Balance: ${valAmount}BNB`}
-                      </Typography>
-                    </SpaceBetweenContainer>
-                    <OutlinedInput
-                      value={valAmount}
-                      onChange={(e) => handleChangeInput(e)}
-                      fullWidth
-                      placeholder="Enter amount"
-                      type="number"
-                      style={{
-                        marginTop: theme.spacing(3),
-                        marginBottom: theme.spacing(3),
-                      }}
-                      endAdornment={
-                        <InputAdornment position="end">
-                          <Typography
-                            style={{
-                              width: "100%",
-                              fontWeight: "bold",
-                              font: "normal normal bold 20px Poppins",
-                              color: "#86c540",
-                              textAlign: "right",
-                            }}
-                          >
-                            {"BNB"}
-                          </Typography>
-                        </InputAdornment>
-                      }
-                    />
-                    <Divider />
-                    <SpaceBetweenContainer>
-                      <Typography
-                        style={{
-                          fontSize: 20,
-                          width: "100%",
-                          font: "normal normal 20px Poppins",
-                          textAlign: "left",
-                        }}
-                      >
-                        {"Pre-Sale Price"}
-                      </Typography>
-                      <Typography
-                        style={{
-                          width: "100%",
-                          font: "normal normal 20px Poppins",
-                          textAlign: "right",
-                        }}
-                      >
-                        {`1 BNB = 125000 FIFA`}
-                      </Typography>
-                    </SpaceBetweenContainer>
-                    <AmountTranferContainer>
-                      <Typography
-                        style={{
-                          width: "100%",
-                          font: "normal normal 20px Poppins",
-                          textAlign: "right",
-                        }}
-                      >
-                        {`1 FIFA ≈ $0.003331`}
-                      </Typography>
-                    </AmountTranferContainer>
-                    {renderBtnAction({
-                      icon: iconDollar,
-                      title: "BUY FIFAFOOTBALL",
-                      backGroundBtn:
-                        "-webkit-linear-gradient(112deg, rgba(141, 198, 63, 1) 0%, rgba(57, 181, 74, 1) 100%)",
-                    })}
-                    <AmountTranferContainer>
-                      <Typography
-                        style={{
-                          width: "100%",
-                          font: "normal normal 20px Poppins",
-                          textAlign: "left",
-                        }}
-                      >
-                        {`Contract: 0x43a1****bA046`}
-                      </Typography>
-                    </AmountTranferContainer>
-                    <AmountTranferContainer>
-                      <Typography
-                        style={{
-                          width: "100%",
-                          font: "normal normal 20px Poppins",
-                          textAlign: "left",
-                        }}
-                      >
-                        {`More: ****`}
-                      </Typography>
-                    </AmountTranferContainer>
-                  </FormContainer>
-                </CardInfoStyle>
+               
+              {/* YOUR CODE HERE */}
+
               </MotionInView>
             </Grid>
           </Grid>

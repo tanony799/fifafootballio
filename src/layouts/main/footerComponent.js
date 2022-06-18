@@ -68,32 +68,32 @@ const Footer = () => {
 
             <div className="row pb-4">
               <div className="col">
-                <a href={LINK_TW} alt="tw" target="_blank">
+                <a href={LINK_TW} alt="tw" target="_blank" rel="noreferrer">
                   <Icon src={twitterIcon} />
                 </a>
               </div>
               <div className="col">
-                <a href={LINK_TELE} alt="tw" target="_blank">
+                <a href={LINK_TELE} alt="tw" target="_blank" rel="noreferrer">
                   <Icon src={telegramIcon} />
                 </a>
               </div>
               <div className="col">
-                <a href={LINK_FB} alt="tw" target="_blank">
+                <a href={LINK_FB} alt="tw" target="_blank" rel="noreferrer">
                   <Icon src={facebookIcon} />
                 </a>
               </div>
               <div className="col">
-                <a href={LINK_MEDIUM} alt="tw" target="_blank">
+                <a href={LINK_MEDIUM} alt="tw" target="_blank" rel="noreferrer">
                   <Icon src={mediumIcon} />
                 </a>
               </div>
               <div className="col">
-                <a href={LINK_YT} alt="tw" target="_blank">
+                <a href={LINK_YT} alt="tw" target="_blank" rel="noreferrer">
                   <Icon src={youtubeIcon} />
                 </a>
               </div>
               <div className="col">
-                <a href={LINK_REDDIT} alt="tw" target="_blank">
+                <a href={LINK_REDDIT} alt="tw" target="_blank" rel="noreferrer">
                   <Icon src={reditIcon} />
                 </a>
               </div>

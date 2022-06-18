@@ -1,7 +1,5 @@
 import Web3 from "web3";
 
-const web3Default = new Web3(Web3.givenProvider);
-
 const initWeb3 = (_window) => {
   if (typeof _window.ethereum !== "undefined") {
     return new Web3(_window.ethereum);
