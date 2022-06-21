@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import TOP10 from "./../../assets/shop/may_cai_the-04-3x.png";
 import TOP20 from "./../../assets/shop/may_cai_the-05-3x.png";
 import TOP30 from "./../../assets/shop/may_cai_the-06-3x.png";
 import TOP100 from "./../../assets/shop/may_cai_the-07-3x.png";
 import TOP50 from "./../../assets/shop/may_cai_the-08-3x.png";
-import { byBox } from "./../../web3/shop.mjs";
-
+import { byCard } from "./../../web3/shop.mjs";
+import meta from "./../../context/Provider";
+import { CHAIN_ID } from "./../../const/const";
+import { isEqual } from "lodash";
 const Wrapper = styled.div``;
 
 const Title = styled.div`
@@ -47,12 +49,25 @@ const Btn = styled.div`
 `;
 
 const BodyShop = () => {
-  const handleByBox = async () => {
+  const _meta = useContext(meta);
+  const [isLoading, setIsLoading] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
+
+  const handleByCard = async (_topKey, _amount, index) => {
+    let _isLoading = [false, false, false, false, false];
+    _isLoading[index] = true;
+    setIsLoading(_isLoading);
     try {
-      const txi = await byBox(1, 1);
-      console.log("txi=>", txi);
+      const txi = await byCard(_meta.web3, _meta.address, _topKey, _amount);
+      setIsLoading([false, false, false, false, false]);
     } catch (error) {
-      window.alert(error);
+      _isLoading[index] = false;
+      setIsLoading([false, false, false, false, false]);
     }
   };
 
@@ -64,31 +79,118 @@ const BodyShop = () => {
           <div className="col">
             <WrapperBox>
               <ResponsiveImage src={TOP10} />
-              <Btn onClick={() => handleByBox(10)}>BUY BOX 1BNB</Btn>
+              {_meta.isConnected && _meta.chainId === CHAIN_ID ? (
+                isLoading[0] ? (
+                  <Btn>
+                    <>
+                      <span
+                        className="spinner-border spinner-border-sm"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                      <span> Minting...</span>
+                    </>
+                  </Btn>
+                ) : (
+                  <Btn onClick={() => handleByCard(10, 1, 0)}>BUY BOX 1BNB</Btn>
+                )
+              ) : (
+                <Btn style={{ opacity: 0.7 }}>BUY BOX 1BNB</Btn>
+              )}
             </WrapperBox>
           </div>
           <div className="col">
             <WrapperBox>
               <ResponsiveImage src={TOP20} />
-              <Btn onClick={() => handleByBox(20)}>BUY BOX 1BNB</Btn>
+              {_meta.isConnected && _meta.chainId === CHAIN_ID ? (
+                isLoading[1] ? (
+                  <Btn>
+                    <>
+                      <span
+                        className="spinner-border spinner-border-sm"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                      <span> Minting...</span>
+                    </>
+                  </Btn>
+                ) : (
+                  <Btn onClick={() => handleByCard(20, 1, 1)}>BUY BOX 1BNB</Btn>
+                )
+              ) : (
+                <Btn style={{ opacity: 0.7 }}>BUY BOX 1BNB</Btn>
+              )}
             </WrapperBox>
           </div>
           <div className="col">
             <WrapperBox>
               <ResponsiveImage src={TOP30} />
-              <Btn onClick={() => handleByBox(30)}>BUY BOX 1BNB</Btn>
+              {_meta.isConnected && _meta.chainId === CHAIN_ID ? (
+                isLoading[2] ? (
+                  <Btn>
+                    <>
+                      <span
+                        className="spinner-border spinner-border-sm"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                      <span> Minting...</span>
+                    </>
+                  </Btn>
+                ) : (
+                  <Btn onClick={() => handleByCard(30, 1, 2)}>BUY BOX 1BNB</Btn>
+                )
+              ) : (
+                <Btn style={{ opacity: 0.7 }}>BUY BOX 1BNB</Btn>
+              )}
             </WrapperBox>
           </div>
           <div className="col">
             <WrapperBox>
               <ResponsiveImage src={TOP50} />
-              <Btn onClick={() => handleByBox(50)}>BUY BOX 1BNB</Btn>
+              {_meta.isConnected && _meta.chainId === CHAIN_ID ? (
+                isLoading[3] ? (
+                  <Btn>
+                    <>
+                      <span
+                        className="spinner-border spinner-border-sm"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                      <span> Minting...</span>
+                    </>
+                  </Btn>
+                ) : (
+                  <Btn onClick={() => handleByCard(50, 1, 3)}>BUY BOX 1BNB</Btn>
+                )
+              ) : (
+                <Btn style={{ opacity: 0.7 }}>BUY BOX 1BNB</Btn>
+              )}
             </WrapperBox>
           </div>
           <div className="col">
             <WrapperBox>
               <ResponsiveImage src={TOP100} />
-              <Btn onClick={() => handleByBox(100)}>BUY BOX 1BNB</Btn>
+              {_meta.isConnected && _meta.chainId === CHAIN_ID ? (
+                isLoading[4] ? (
+                  <Btn>
+                    <>
+                      <span
+                        className="spinner-border spinner-border-sm"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                      <span> Minting...</span>
+                    </>
+                  </Btn>
+                ) : (
+                  <Btn onClick={() => handleByCard(100, 1, 4)}>
+                    BUY BOX 1BNB
+                  </Btn>
+                )
+              ) : (
+                <Btn style={{ opacity: 0.7 }}>BUY BOX 1BNB</Btn>
+              )}
             </WrapperBox>
           </div>
         </div>

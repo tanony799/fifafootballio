@@ -1,9 +1,30 @@
 import Web3 from "web3";
 
-const web3 = new Web3(Web3.givenProvider);
+const web3Default = new Web3(Web3.givenProvider);
 
-const hexToNumber = (_hexCode) => {
-  return web3.utils.hexToNumber(_hexCode);
+const initWeb3 = (_window) => {
+  if (typeof _window.ethereum !== "undefined") {
+    return new Web3(_window.ethereum);
+  }
+  return null;
 };
 
-export { hexToNumber };
+const hexToNumber = (_hexCode) => {
+  return web3Default.utils.hexToNumber(_hexCode);
+};
+
+const approve = async (_web3, _abi, _addr, _from, _spender, _amount) => {
+  const ctract = genContract(_web3, _abi, _addr);
+  return await ctract.methods.approve(_spender, _amount).send({ from: _from });
+};
+
+const allowance = async (_web3, _abi, _addr, _spender, _from) => {
+  const ctract = genContract(_web3, _abi, _addr);
+  return await ctract.methods.allowance(_from, _spender).call();
+};
+
+const genContract = (_web3, _abi, _addr) => {
+  return new _web3.eth.Contract(_abi, _addr);
+};
+
+export { hexToNumber, genContract, initWeb3, approve, allowance };

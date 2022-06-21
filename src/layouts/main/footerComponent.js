@@ -13,7 +13,7 @@ const LINK_TELE = "https://t.me/FiFaFootballChannel";
 const LINK_FB = "https://www.facebook.com/FiFafootball.io";
 const LINK_REDDIT = "https://www.reddit.com/r/FiFafootball2022";
 const LINK_YT = "https://www.youtube.com/watch?v=MbI1qYA-4IE";
-const LINK_MEDIUM = "https://medium.com/@FIFAFootball";
+// const LINK_MEDIUM = "https://medium.com/@FIFAFootball";
 
 const Wrapper = styled.div``;
 
@@ -82,11 +82,11 @@ const Footer = () => {
                   <Icon src={facebookIcon} />
                 </a>
               </div>
-              <div className="col">
+              {/* <div className="col">
                 <a href={LINK_MEDIUM} alt="tw" target="_blank" rel="noreferrer">
                   <Icon src={mediumIcon} />
                 </a>
-              </div>
+              </div> */}
               <div className="col">
                 <a href={LINK_YT} alt="tw" target="_blank" rel="noreferrer">
                   <Icon src={youtubeIcon} />

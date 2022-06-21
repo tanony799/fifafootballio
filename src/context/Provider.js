@@ -33,11 +33,13 @@ export const MetaProvider = ({ children }) => {
     });
 
     window.ethereum.on("chainChanged", (_chainId) => {
-      setChainId(hexToNumber(_chainId));
-      if ((hexToNumber(_chainId) === CHAIN_ID) && isConnected ) {
-        getBalance(web3, address).then((_balance) =>
-          setBalance(Number(_balance) / Math.pow(10, 18))
-        );
+      setChainId(checkChainId(_chainId));
+      if (checkChainId(_chainId) === CHAIN_ID && isConnected) {
+        getBalance(web3, address).then((_balance) => {
+          setBalance(Number(_balance) / Math.pow(10, 18));
+        });
+      } else {
+        setBalance(0);
       }
     });
   }
@@ -46,22 +48,30 @@ export const MetaProvider = ({ children }) => {
     if (typeof window.ethereum !== "undefined") {
       if (!web3) setWeb3(initWeb3(window));
 
+      let _isConnected = false;
+      let _address = "";
       getAccount(web3).then((_accounts) => {
         if (!isEmpty(_accounts)) {
           setIsConnected(true);
           setAddress(_accounts[0]);
+          _isConnected = true;
+          _address = _accounts[0];
         }
       });
-
       getChainId(web3).then((_chainId) => {
-        setChainId(hexToNumber(_chainId));
-        if (hexToNumber(_chainId) === CHAIN_ID && isConnected)
-          getBalance(web3, address).then((amount) =>
+        setChainId(checkChainId(_chainId));
+        if (checkChainId(_chainId) === CHAIN_ID && _isConnected) {
+          getBalance(web3, _address).then((amount) =>
             setBalance(Number(amount) / Math.pow(10, 18))
           );
+        }
       });
     }
   }, []);
+  const checkChainId = (_chainId) => {
+    if (typeof _chainId !== "number") return hexToNumber(_chainId);
+    return _chainId;
+  };
 
   return (
     <MetaConnect.Provider
@@ -70,10 +80,12 @@ export const MetaProvider = ({ children }) => {
         chainId,
         balance,
         address,
+        web3,
         setIsConnected,
         setChainId,
         setBalance,
         setAddress,
+        setWeb3,
       }}
     >
       {children}

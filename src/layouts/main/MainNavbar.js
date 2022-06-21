@@ -151,10 +151,12 @@ export default function MainNavbar() {
                   "-webkit-linear-gradient(112deg, rgba(141, 198, 63, 1) 0%, rgba(57, 181, 74, 1) 100%)",
               }}
             >
-              {_meta.chainId !== CHAIN_ID ? (
-                <span className="text-warning">Wrong Network!</span>
-              ) : _meta.isConnected ? (
-                formatAddress(_meta.address)
+              {_meta.isConnected ? (
+                _meta.chainId !== CHAIN_ID ? (
+                  <span className="text-warning">Wrong Network!</span>
+                ) : (
+                  formatAddress(_meta.address)
+                )
               ) : (
                 `CONNECT WALLET`
               )}
@@ -170,10 +172,12 @@ export default function MainNavbar() {
                   "-webkit-linear-gradient(112deg, rgba(141, 198, 63, 1) 0%, rgba(57, 181, 74, 1) 100%)",
               }}
             >
-              {_meta.chainId !== CHAIN_ID ? (
-                <span className="text-warning">Wrong Network!</span>
-              ) : _meta.isConnected ? (
-                formatAddress(_meta.address)
+              {_meta.isConnected ? (
+                _meta.chainId !== CHAIN_ID ? (
+                  <span className="text-warning">Wrong Network!</span>
+                ) : (
+                  formatAddress(_meta.address)
+                )
               ) : (
                 `CONNECT WALLET`
               )}
