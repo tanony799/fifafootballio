@@ -3,6 +3,7 @@ import {
   FIFA_SALE,
   FIFA_NFT,
   AMOUNT_APPROVE,
+  BASE_URL,
 } from "./../const/const";
 import { FIFA_TOKEN_ABI, FIFA_SALE_ABI } from "./abi.mjs";
 import { genContract, approve, allowance } from "./utils.mjs";
@@ -23,7 +24,6 @@ const allowanceFIFA = async (_web3, _from) => {
 };
 
 const byCard = async (_web3, _from, _topKey, _amountItems) => {
-
   const txi = {};
 
   const ctract = await genContract(_web3, FIFA_SALE_ABI, FIFA_SALE);
@@ -32,7 +32,7 @@ const byCard = async (_web3, _from, _topKey, _amountItems) => {
 
   if (Number(_allowance) <= 0) await approveFIFA(_web3, _from);
 
-   await ctract.methods
+  await ctract.methods
     .buyCard(_topKey, _amountItems)
     .send({ from: _from })
     .then((e) => {
