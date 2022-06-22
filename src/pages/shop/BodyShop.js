@@ -8,7 +8,8 @@ import TOP50 from "./../../assets/shop/may_cai_the-08-3x.png";
 import { byCard } from "./../../web3/shop.mjs";
 import meta from "./../../context/Provider";
 import { CHAIN_ID } from "./../../const/const";
-import { isEqual } from "lodash";
+import { HeaderShop } from "./HeaderShop";
+
 const Wrapper = styled.div``;
 
 const Title = styled.div`
@@ -73,7 +74,7 @@ const BodyShop = () => {
 
   return (
     <Wrapper>
-      <Title className="mb-3">BOX RAFFLE</Title>
+      <HeaderShop />
       <div className="container">
         <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
           <div className="col">
