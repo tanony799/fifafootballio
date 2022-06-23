@@ -76,7 +76,7 @@ const BodyShop = () => {
     <Wrapper>
       <HeaderShop />
       <div className="container">
-        <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+        <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 gy-4">
           <div className="col">
             <WrapperBox>
               <ResponsiveImage src={TOP10} />

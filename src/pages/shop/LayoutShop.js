@@ -28,6 +28,7 @@ import { BodyShop } from "./BodyShop";
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
   position: "relative",
+  paddingBottom: 50,
   background: `url(${backGroundIcon})`,
   backgroundSize: "cover",
   backgroundPosition: "center",
