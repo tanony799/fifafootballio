@@ -6,23 +6,23 @@ import ICON_$ from "./../../assets/shop/group_656-2x.png";
 
 const Wrapper = styled.div`
   background-color: #0b1f4f;
-  width: 100%;
+  // width: 100%;
   margin-bottom: 30px;
   padding: 20px 40px;
   border-radius: 10px;
   display: flex;
   @media (max-width: 768px) {
-    padding: 10px 20px;
+    padding: 20px 20px;
   }
 `;
 
 const ImgResponsive = styled.img`
-  width: 100%;
-  height: 50px;
+  width: 15 %;
+  height: auto;
   margin: auto;
   @media (max-width: 768px) {
     width: 30%;
-    height: 40px;
+    height: auto;
     margin-right: 0px;
     margin-left: 0px;
   }
@@ -41,6 +41,7 @@ const Divider = styled.div`
   border-left: 1px solid white;
   width: 1px;
   height: 65px;
+  opacity: 0.5;
   @media (max-width: 768px) {
     height: 50px;
   }
@@ -67,11 +68,17 @@ const Btn = styled.div`
   font: normal normal bold 16px Poppins;
   border-radius: 10px;
   border: 1px solid #5abc45;
+  width: 140px;
   padding: 10px 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 100%;
+  @media (max-width: 768px) {
+    font: normal normal bold 12px Poppins;
+    padding: 7px 12px;
+    width: 105px;
+  }
 `;
 
 const Icon = styled.img`
@@ -81,25 +88,27 @@ const Icon = styled.img`
 
 export const HeaderShop = () => {
   return (
-    <Wrapper>
-      <WrapperGroup className="me-1 me-md-5 justify-content-center">
-        <ImgResponsive src={ICON_FIFA} />
-        <Divider />
-        <div>
-          <TokenName className="mt-2">FIFA</TokenName>
-          <Balance>0</Balance>
-        </div>
-      </WrapperGroup>
-      <WrapperGroup className="ms-1 ms-md-5 justify-content-center">
-        <ImgResponsive src={ICON_BNB} />
-        <Divider />
-        <div>
-          <TokenName className="mt-2 text-warning">BNB</TokenName>
-          <Balance>0</Balance>
-        </div>
-      </WrapperGroup>
-      <div className="w-100 h-100 my-auto d-sm-none d-none d-md-block">
-        <div className="d-flex justify-content-end">
+    <Wrapper className="row mx-0">
+      <div className="col-12 col-sm-12 col-md-6 d-flex pb-md-0 pb-3 pb-sm-3">
+        <WrapperGroup className="me-1 me-md-4 justify-content-center">
+          <ImgResponsive src={ICON_FIFA} />
+          <Divider />
+          <div>
+            <TokenName className="mt-2">FIFA</TokenName>
+            <Balance>0</Balance>
+          </div>
+        </WrapperGroup>
+        <WrapperGroup className="ms-1 ms-md-4 justify-content-center">
+          <ImgResponsive src={ICON_BNB} />
+          <Divider />
+          <div>
+            <TokenName className="mt-2 text-warning">BNB</TokenName>
+            <Balance>0</Balance>
+          </div>
+        </WrapperGroup>
+      </div>
+      <div className="col-12 col-sm-12 col-md-6 h-100 my-auto">
+        <div className="d-flex justify-content-md-end align-items-center justify-content-center justify-content-sm-center">
           <Btn>
             <Icon src={ICON_$} /> CONVERT
           </Btn>
