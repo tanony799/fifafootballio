@@ -1,22 +1,28 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
-import TOP10 from "./../../assets/shop/may_cai_the-04-3x.png";
-import TOP20 from "./../../assets/shop/may_cai_the-05-3x.png";
-import TOP30 from "./../../assets/shop/may_cai_the-06-3x.png";
-import TOP100 from "./../../assets/shop/may_cai_the-07-3x.png";
-import TOP50 from "./../../assets/shop/may_cai_the-08-3x.png";
 import ICON_FF from "./../../assets/shop/icon-token-fifa-mini.png";
 import { byCard } from "./../../web3/shop.mjs";
 import meta from "./../../context/Provider";
 import { CHAIN_ID } from "./../../const/const";
 import { HeaderShop } from "./HeaderShop";
-import { style } from "@mui/system";
+import DIAMOND from "./../../assets/shop-1/diamond.png";
+import GOLD from "./../../assets/shop-1/gold.png";
+import PLATIUM from "./../../assets/shop-1/platium.png";
+import TOP10 from "./../../assets/shop-1/10.png";
+import TOP20 from "./../../assets/shop-1/20.png";
+import TOP30 from "./../../assets/shop-1/30.png";
+import TOP50 from "./../../assets/shop-1/50.png";
+import TOP100 from "./../../assets/shop-1/100.png";
+import TOP200 from "./../../assets/shop-1/200.png";
+import ALL from "./../../assets/shop-1/all.png";
+
+import { ModalBuy } from "./modal";
 
 const Wrapper = styled.div``;
 
 const Title = styled.div`
   font: normal normal bold 15px Poppins;
-  color: rgba(57, 181, 74, 1);
+  color: #86c540;
   text-align: center;
 `;
 
@@ -28,11 +34,25 @@ const Content = styled.div`
   }
 `;
 
+const WrapperPrice = styled.div`
+  font: normal normal normal 14px Poppins;
+  white-space: nowrap;
+  @media (max-width: 768px) {
+    font: normal normal normal 12px Poppins;
+  }
+`;
+
 const WrapperBox = styled.div`
-  height: 210px;
+  // height: 210px;
   padding: 10px;
   background-color: rgba(11, 31, 79, 1);
   border-radius: 10px;
+  &: hover {
+    cursor: pointer;
+    .hover-item {
+      transform: scale(1.1);
+    }
+  }
 `;
 
 const ResponsiveImage = styled.img`
@@ -43,11 +63,13 @@ const ResponsiveImage = styled.img`
 
 const ResponsiveIcon = styled.img`
   width: 50%;
-  height: 30px;
+  height: 20px;
 `;
 
 const BodyShop = () => {
   const _meta = useContext(meta);
+  const [isBuying, setIsBuying] = useState(false);
+  const [dataBuy, setDataBuy] = useState({});
   const [isLoading, setIsLoading] = useState([
     false,
     false,
@@ -69,83 +91,347 @@ const BodyShop = () => {
     }
   };
 
+  const handleBuy = (_dataBuy) => {
+    setIsBuying(true);
+    setDataBuy(_dataBuy);
+  };
+
+  const handleClose = () => {
+    setIsBuying(false);
+  };
+
   return (
     <Wrapper>
       <HeaderShop />
       <div className="container">
         <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 gy-4">
           <div className="col">
-            <WrapperBox>
+            <WrapperBox
+              onClick={(e) =>
+                handleBuy({ name: "GOLD BOX", price: 20, imgName: "GOLD" })
+              }
+            >
               <div>
-                <Title>Gold Box</Title>
+                <Title>GOLD BOX</Title>
               </div>
               <div>
-                <ResponsiveImage src={TOP10} />
+                <ResponsiveImage className="hover-item" src={GOLD} />
               </div>
               <div className="d-flex justify-content-between">
                 <div>
                   <Content>#1021112661</Content>
-                  <Content>FIFA: 360/72H</Content>
+                  <Content>
+                    <span style={{ opacity: 0.7 }}>FIFA:</span>{" "}
+                    <span className="fw-bold">360/72H</span>
+                  </Content>
                 </div>
                 <div className="d-flex">
-                  <ResponsiveIcon src={ICON_FF} className="me-2 my-auto" />
-                  <Content
+                  <ResponsiveIcon src={ICON_FF} className="me-1 my-auto" />
+                  <WrapperPrice
                     className="fw-bold my-auto"
                     style={{ color: "rgba(57, 181, 74, 1)" }}
                   >
                     20
-                  </Content>
+                  </WrapperPrice>
                 </div>
               </div>
             </WrapperBox>
           </div>
           <div className="col">
-            <WrapperBox>
-              <ResponsiveImage src={TOP20} />
+            <WrapperBox
+              onClick={(e) =>
+                handleBuy({ name: "PLATIUM BOX", price: 10, imgName: "PLATIUM" })
+              }
+            >
+              <div>
+                <Title>PLATIUM BOX</Title>
+              </div>
+              <div>
+                <ResponsiveImage className="hover-item" src={PLATIUM} />
+              </div>
+              <div className="d-flex justify-content-between">
+                <div>
+                  <Content>#1021112661</Content>
+                  <Content>
+                    <span style={{ opacity: 0.7 }}>FIFA:</span>{" "}
+                    <span className="fw-bold">360/72H</span>
+                  </Content>
+                </div>
+                <div className="d-flex">
+                  <ResponsiveIcon src={ICON_FF} className="me-1 my-auto" />
+                  <WrapperPrice
+                    className="fw-bold my-auto"
+                    style={{ color: "rgba(57, 181, 74, 1)" }}
+                  >
+                    20
+                  </WrapperPrice>
+                </div>
+              </div>
             </WrapperBox>
           </div>
           <div className="col">
-            <WrapperBox>
-              <ResponsiveImage src={TOP30} />
+            <WrapperBox
+              onClick={(e) =>
+                handleBuy({ name: "GOLD BOX", price: 20, imgName: "GOLD" })
+              }
+            >
+              <div>
+                <Title>DIAMOND BOX</Title>
+              </div>
+              <div>
+                <ResponsiveImage className="hover-item" src={DIAMOND} />
+              </div>
+              <div className="d-flex justify-content-between">
+                <div>
+                  <Content>#1021112661</Content>
+                  <Content>
+                    <span style={{ opacity: 0.7 }}>FIFA:</span>{" "}
+                    <span className="fw-bold">360/72H</span>
+                  </Content>
+                </div>
+                <div className="d-flex">
+                  <ResponsiveIcon src={ICON_FF} className="me-1 my-auto" />
+                  <WrapperPrice
+                    className="fw-bold my-auto"
+                    style={{ color: "rgba(57, 181, 74, 1)" }}
+                  >
+                    20
+                  </WrapperPrice>
+                </div>
+              </div>
             </WrapperBox>
           </div>
           <div className="col">
-            <WrapperBox>
-              <ResponsiveImage src={TOP50} />
+            <WrapperBox
+              onClick={(e) =>
+                handleBuy({ name: "GOLD BOX", price: 20, imgName: "GOLD" })
+              }
+            >
+              <div>
+                <Title>TOP 10</Title>
+              </div>
+              <div>
+                <ResponsiveImage className="hover-item" src={TOP10} />
+              </div>
+              <div className="d-flex justify-content-between">
+                <div>
+                  <Content>#1021112661</Content>
+                  <Content>
+                    <span style={{ opacity: 0.7 }}>FIFA:</span>{" "}
+                    <span className="fw-bold">360/72H</span>
+                  </Content>
+                </div>
+                <div className="d-flex">
+                  <ResponsiveIcon src={ICON_FF} className="me-1 my-auto" />
+                  <WrapperPrice
+                    className="fw-bold my-auto"
+                    style={{ color: "rgba(57, 181, 74, 1)" }}
+                  >
+                    20
+                  </WrapperPrice>
+                </div>
+              </div>
             </WrapperBox>
           </div>
           <div className="col">
-            <WrapperBox>
-              <ResponsiveImage src={TOP100} />
+            <WrapperBox
+              onClick={(e) =>
+                handleBuy({ name: "GOLD BOX", price: 20, imgName: "GOLD" })
+              }
+            >
+              <div>
+                <Title>TOP 20</Title>
+              </div>
+              <div>
+                <ResponsiveImage className="hover-item" src={TOP20} />
+              </div>
+              <div className="d-flex justify-content-between">
+                <div>
+                  <Content>#1021112661</Content>
+                  <Content>
+                    <span style={{ opacity: 0.7 }}>FIFA:</span>{" "}
+                    <span className="fw-bold">360/72H</span>
+                  </Content>
+                </div>
+                <div className="d-flex">
+                  <ResponsiveIcon src={ICON_FF} className="me-1 my-auto" />
+                  <WrapperPrice
+                    className="fw-bold my-auto"
+                    style={{ color: "rgba(57, 181, 74, 1)" }}
+                  >
+                    20
+                  </WrapperPrice>
+                </div>
+              </div>
             </WrapperBox>
           </div>
           <div className="col">
-            <WrapperBox>
-              <ResponsiveImage src={TOP100} />
+            <WrapperBox
+              onClick={(e) =>
+                handleBuy({ name: "GOLD BOX", price: 20, imgName: "GOLD" })
+              }
+            >
+              <div>
+                <Title>TOP 30</Title>
+              </div>
+              <div>
+                <ResponsiveImage className="hover-item" src={TOP30} />
+              </div>
+              <div className="d-flex justify-content-between">
+                <div>
+                  <Content>#1021112661</Content>
+                  <Content>
+                    <span style={{ opacity: 0.7 }}>FIFA:</span>{" "}
+                    <span className="fw-bold">360/72H</span>
+                  </Content>
+                </div>
+                <div className="d-flex">
+                  <ResponsiveIcon src={ICON_FF} className="me-1 my-auto" />
+                  <WrapperPrice
+                    className="fw-bold my-auto"
+                    style={{ color: "rgba(57, 181, 74, 1)" }}
+                  >
+                    20
+                  </WrapperPrice>
+                </div>
+              </div>
             </WrapperBox>
           </div>
           <div className="col">
-            <WrapperBox>
-              <ResponsiveImage src={TOP100} />
+            <WrapperBox
+              onClick={(e) =>
+                handleBuy({ name: "GOLD BOX", price: 20, imgName: "GOLD" })
+              }
+            >
+              <div>
+                <Title>TOP 50</Title>
+              </div>
+              <div>
+                <ResponsiveImage className="hover-item" src={TOP50} />
+              </div>
+              <div className="d-flex justify-content-between">
+                <div>
+                  <Content>#1021112661</Content>
+                  <Content>
+                    <span style={{ opacity: 0.7 }}>FIFA:</span>{" "}
+                    <span className="fw-bold">360/72H</span>
+                  </Content>
+                </div>
+                <div className="d-flex">
+                  <ResponsiveIcon src={ICON_FF} className="me-1 my-auto" />
+                  <WrapperPrice
+                    className="fw-bold my-auto"
+                    style={{ color: "rgba(57, 181, 74, 1)" }}
+                  >
+                    20
+                  </WrapperPrice>
+                </div>
+              </div>
             </WrapperBox>
           </div>
           <div className="col">
-            <WrapperBox>
-              <ResponsiveImage src={TOP100} />
+            <WrapperBox
+              onClick={(e) =>
+                handleBuy({ name: "GOLD BOX", price: 20, imgName: "GOLD" })
+              }
+            >
+              <div>
+                <Title>TOP 100</Title>
+              </div>
+              <div>
+                <ResponsiveImage className="hover-item" src={TOP100} />
+              </div>
+              <div className="d-flex justify-content-between">
+                <div>
+                  <Content>#1021112661</Content>
+                  <Content>
+                    <span style={{ opacity: 0.7 }}>FIFA:</span>{" "}
+                    <span className="fw-bold">360/72H</span>
+                  </Content>
+                </div>
+                <div className="d-flex">
+                  <ResponsiveIcon src={ICON_FF} className="me-1 my-auto" />
+                  <WrapperPrice
+                    className="fw-bold my-auto"
+                    style={{ color: "rgba(57, 181, 74, 1)" }}
+                  >
+                    20
+                  </WrapperPrice>
+                </div>
+              </div>
             </WrapperBox>
           </div>
           <div className="col">
-            <WrapperBox>
-              <ResponsiveImage src={TOP100} />
+            <WrapperBox
+              onClick={(e) =>
+                handleBuy({ name: "GOLD BOX", price: 20, imgName: "GOLD" })
+              }
+            >
+              <div>
+                <Title>TOP 200</Title>
+              </div>
+              <div>
+                <ResponsiveImage className="hover-item" src={TOP200} />
+              </div>
+              <div className="d-flex justify-content-between">
+                <div>
+                  <Content>#1021112661</Content>
+                  <Content>
+                    <span style={{ opacity: 0.7 }}>FIFA:</span>{" "}
+                    <span className="fw-bold">360/72H</span>
+                  </Content>
+                </div>
+                <div className="d-flex">
+                  <ResponsiveIcon src={ICON_FF} className="me-1 my-auto" />
+                  <WrapperPrice
+                    className="fw-bold my-auto"
+                    style={{ color: "rgba(57, 181, 74, 1)" }}
+                  >
+                    20
+                  </WrapperPrice>
+                </div>
+              </div>
             </WrapperBox>
           </div>
           <div className="col">
-            <WrapperBox>
-              <ResponsiveImage src={TOP100} />
+            <WrapperBox
+              onClick={(e) =>
+                handleBuy({ name: "GOLD BOX", price: 20, imgName: "GOLD" })
+              }
+            >
+              <div>
+                <Title>ALL</Title>
+              </div>
+              <div>
+                <ResponsiveImage className="hover-item" src={ALL} />
+              </div>
+              <div className="d-flex justify-content-between">
+                <div>
+                  <Content>#1021112661</Content>
+                  <Content>
+                    <span style={{ opacity: 0.7 }}>FIFA:</span>{" "}
+                    <span className="fw-bold">360/72H</span>
+                  </Content>
+                </div>
+                <div className="d-flex">
+                  <ResponsiveIcon src={ICON_FF} className="me-1 my-auto" />
+                  <WrapperPrice
+                    className="fw-bold my-auto"
+                    style={{ color: "rgba(57, 181, 74, 1)" }}
+                  >
+                    20
+                  </WrapperPrice>
+                </div>
+              </div>
             </WrapperBox>
           </div>
         </div>
       </div>
+      <ModalBuy
+        isOpen={isBuying}
+        dataBuy={dataBuy}
+        onClose={(e) => handleClose()}
+      />
     </Wrapper>
   );
 };
