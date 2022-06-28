@@ -40,6 +40,8 @@ export default function Router() {
         { element: <LandingPage /> },
         { path: 'ido', element: <IdoPage /> },
         { path: 'shop-t-bsc-1102', element: <ShopPage /> },
+        { path: 'market', element: <MarketPage /> },
+        { path: 'my-nft', element: <MyNftPage /> },
         { path: '404', element: <NotFound /> },
       ]
     },
@@ -50,4 +52,6 @@ export default function Router() {
 const LandingPage = Loadable(lazy(() => import('../pages/LandingPage')));
 const IdoPage = Loadable(lazy(() => import('../pages/ido')));
 const ShopPage = Loadable(lazy(() => import('../pages/shop')));
+const MarketPage = Loadable(lazy(() => import('../pages/market')));
+const MyNftPage = Loadable(lazy(() => import('../pages/mynft')));
 const NotFound = Loadable(lazy(() => import('../pages/Page404')));
