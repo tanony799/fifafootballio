@@ -1,18 +1,11 @@
 import React, { useState } from "react";
-import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import flashFill from "@iconify/icons-eva/flash-fill";
-import { Link as RouterLink } from "react-router-dom";
-// material
 import { styled, alpha, useTheme } from "@mui/material/styles";
 import {
-  Button,
   Box,
-  Link,
   Container,
   Typography,
-  Stack,
   Grid,
   Card,
   useMediaQuery,
@@ -26,7 +19,6 @@ import {
   MotionInView,
 } from "../../components/animate";
 import { MHidden } from "../../components/@material-extend";
-// icon backgroud
 import backGroundIcon from "../../assets/icons/back-ground-landing.png";
 import iconContact from "../../assets/icons/contact.png";
 import iconHome from "../../assets/icons/home-white.png";
@@ -34,10 +26,7 @@ import iconPlayGame from "../../assets/icons/game.png";
 import iconShop from "../../assets/icons/shop.png";
 import iconMarket from "../../assets/icons/market.png";
 import iconIdo from "../../assets/icons/ido.png";
-import iconMyNFTS from "../../assets/icons/my-nfts.png";
 import iconDollar from "../../assets/icons/dollar.png";
-
-// ----------------------------------------------------------------------
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
   position: "relative",
@@ -51,7 +40,6 @@ const RootStyle = styled(motion.div)(({ theme }) => ({
     height: "100%",
     display: "flex",
     position: "fixed",
-    // alignItems: "center",
   },
 }));
 
@@ -103,19 +91,8 @@ const CardInfoStyle = styled(Card)(({ theme }) => {
   };
 });
 
-const TitleStyle = styled(Typography)(({ theme }) => ({
-  width: "100%",
-  background:
-    "-webkit-linear-gradient(112deg, rgba(141, 198, 63, 1) 0%, rgba(57, 181, 74, 1) 100%)",
-  WebkitBackgroundClip: "text",
-  WebkitTextFillColor: "transparent",
-  fontWeight: "bold",
-  font: "normal normal bold 40px Poppins",
-}));
-
 const MenuItemIdoStyle = styled("div")(({ theme }) => ({
   display: "flex",
-  // backgroundColor: "#212B36",
   borderRadius: "9px",
   justifyContent: "flex-start",
   alignItems: "center",
@@ -178,11 +155,8 @@ const FormContainer = styled("div")(({ theme }) => ({
   margin: theme.spacing(3),
 }));
 
-// ----------------------------------------------------------------------
-
 export default function LayoutIdo() {
   const theme = useTheme();
-  const isLight = theme.palette.mode === "light";
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
   const navigate = useNavigate();
   const [valAmount, setValAmount] = useState("");
@@ -191,7 +165,6 @@ export default function LayoutIdo() {
     setValAmount(e.target.value);
   };
 
-  // render button action
   const renderBtnAction = (item) => {
     const { icon, title, backGroundBtn } = item || {};
     return (
@@ -213,14 +186,16 @@ export default function LayoutIdo() {
               alignContent: "center",
             }}
           >
-            <img src={icon} style={{ height: 16, width: 10, marginRight: 5 }} />
+            <img
+              src={icon}
+              style={{ height: 16, width: 10, marginRight: 5 }}
+              alt="null"
+            />
             <Typography
               style={{
-                // fontSize: 16,
                 width: "100%",
                 fontFamily: "inherit",
                 font: "normal normal bold 16px Poppins",
-                // fontWeight: "bold",
               }}
             >
               {title}
@@ -236,7 +211,6 @@ export default function LayoutIdo() {
       <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
         <Container maxWidth="xl" sx={{ marginTop: 10 }}>
           <Grid container spacing={isDesktop ? 15 : 5}>
-            {/* {Menu item} */}
             <MHidden width="mdDown">
               <Grid key={"NFT-MenuItem"} item xs={12} md={3} mt={3}>
                 <MotionInView variants={varFadeInUp}>
@@ -250,6 +224,7 @@ export default function LayoutIdo() {
                           marginRight: 10,
                           marginLeft: 10,
                         }}
+                        alt="iconhome"
                       />
                       <Typography
                         style={{ font: "normal normal bold 18px Poppins" }}
@@ -266,6 +241,7 @@ export default function LayoutIdo() {
                           marginRight: 10,
                           marginLeft: 10,
                         }}
+                        alt="iconplaygame"
                       />
                       <Typography
                         style={{ font: "normal normal bold 18px Poppins" }}
@@ -282,6 +258,7 @@ export default function LayoutIdo() {
                           marginRight: 10,
                           marginLeft: 10,
                         }}
+                        alt="iconshop"
                       />
                       <Typography
                         style={{ font: "normal normal bold 18px Poppins" }}
@@ -298,6 +275,7 @@ export default function LayoutIdo() {
                           marginRight: 10,
                           marginLeft: 10,
                         }}
+                        alt="iconmarket"
                       />
                       <Typography
                         style={{ font: "normal normal bold 18px Poppins" }}
@@ -314,6 +292,7 @@ export default function LayoutIdo() {
                           marginRight: 10,
                           marginLeft: 10,
                         }}
+                        alt="iconido"
                       />
                       <Typography
                         style={{ font: "normal normal bold 18px Poppins" }}
@@ -322,64 +301,42 @@ export default function LayoutIdo() {
                       </Typography>
                     </MenuItemIdoStyle>
                     <MenuItemStyle>
-                      <img
-                        src={iconMyNFTS}
+                      <a
+                        href="https://docs.fifafootball.io"
                         style={{
-                          width: 18,
-                          height: 16,
-                          marginRight: 10,
-                          marginLeft: 10,
+                          textDecoration: "none",
+                          color: "#ffffff",
                         }}
-                      />
-                      <Typography
-                        style={{ font: "normal normal bold 18px Poppins" }}
+                        className="d-flex"
+                        target="_blank"
+                        rel="noreferrer"
                       >
-                        {"MY NFTS"}
-                      </Typography>
-                    </MenuItemStyle>
-                    <MenuItemStyle>
-                      <img
-                        src={iconContact}
-                        style={{
-                          width: 18,
-                          height: 16,
-                          marginRight: 10,
-                          marginLeft: 10,
-                        }}
-                      />
-                      <Typography
-                        style={{ font: "normal normal bold 18px Poppins" }}
-                      >
-                        {"CONTACT"}
-                      </Typography>
+                        <img
+                          src={iconContact}
+                          style={{
+                            width: 18,
+                            height: 16,
+                            marginRight: 10,
+                            marginLeft: 10,
+                          }}
+                          className="my-auto"
+                          alt="iconContact"
+                        />
+                        <Typography
+                          style={{
+                            font: "normal normal bold 18px Poppins",
+                            textDecoration: "none !important",
+                          }}
+                        >
+                          {"INTRODUCTION"}
+                        </Typography>
+                      </a>
                     </MenuItemStyle>
                   </CardStyle>
                 </MotionInView>
               </Grid>
             </MHidden>
-            {/* Button connect wallet */}
-            {/* <MHidden width="mdUp">
-              <Grid
-                item
-                key={"Button-connect-wallet"}
-                container
-                direction="row"
-                justifyContent="flex-end"
-              >
-                <Button
-                  variant="contained"
-                  style={{
-                    font: "normal normal bold 14px Poppins",
-                    background:
-                      "-webkit-linear-gradient(112deg, rgba(141, 198, 63, 1) 0%, rgba(57, 181, 74, 1) 100%)",
-                  }}
-                >
-                  CONNECT WALL
-                </Button>
-              </Grid>
-            </MHidden> */}
 
-            {/* {Info} */}
             <Grid key={"NFT-Info"} item xs={12} md={8} mt={3}>
               <MotionInView variants={varFadeInUp}>
                 <CardInfoStyle>
@@ -476,7 +433,6 @@ export default function LayoutIdo() {
                         {`1 FIFA ≈ $0.003331`}
                       </Typography>
                     </AmountTranferContainer>
-                    {/* Button */}
                     {renderBtnAction({
                       icon: iconDollar,
                       title: "BUY FIFAFOOTBALL",

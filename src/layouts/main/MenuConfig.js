@@ -77,11 +77,11 @@ const menuConfig = [
     icon: <img src={youtubeIcon} {...ICON_YOUTUBE_SIZE} />,
     path: "https://www.youtube.com/watch?v=MbI1qYA-4IE",
   },
-  {
-    title: "Medium",
-    icon: <img src={mediumIcon} {...ICON_TIKTOK_SIZE} />,
-    path: "https://medium.com/@FIFAFootball",
-  },
+  // {
+  //   title: "Medium",
+  //   icon: <img src={mediumIcon} {...ICON_TIKTOK_SIZE} />,
+  //   path: "https://medium.com/@FIFAFootball",
+  // },
 ];
 
 export default menuConfig;

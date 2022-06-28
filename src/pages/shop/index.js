@@ -1,9 +1,9 @@
 import { styled } from "@mui/material/styles";
 import Page from "../../components/Page";
-import LayoutIdo from "./LayoutIdo"
+import LayoutIdo from "./LayoutShop"
 
 const RootStyle = styled(Page)({
-  height: "100%",
+  minHeight: "100%",
 });
 
 export default function IdoPage() {
