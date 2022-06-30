@@ -17,6 +17,7 @@ import navConfig from "./MenuConfig";
 import navMobileConfig from "./MenuMobileConfig";
 import metaStorage from "./../../context/Provider";
 import { getBalance, getChainId, initWeb3 } from "./../../web3/login.mjs";
+import { getBalanceFIFA } from "./../../web3/shop.mjs";
 import { hexToNumber } from "./../../web3/utils.mjs";
 import { CHAIN_ID } from "./../../const/const";
 
@@ -72,10 +73,14 @@ export default function MainNavbar() {
         _meta.setAddress(e[0]);
         getChainId(initWeb3(window)).then((_chainId) => {
           _meta.setChainId(hexToNumber(_chainId));
-          if (hexToNumber(_chainId) === CHAIN_ID)
+          if (hexToNumber(_chainId) === CHAIN_ID) {
             getBalance(initWeb3(window), e[0]).then((_balance) =>
               _meta.setBalance(Number(_balance) / Math.pow(10, 18))
             );
+            getBalanceFIFA(initWeb3(window), e[0]).then((_balance) =>
+              _meta.setBalanceFF(Number(_balance) / Math.pow(10, 18))
+            );
+          }
         });
       })
       .catch((e) => {

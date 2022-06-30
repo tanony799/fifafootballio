@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import ICON_BNB from "./../../assets/shop/icon-token-bnb.png";
 import ICON_FIFA from "./../../assets/shop/icon-token-fifa.png";
 import ICON_$ from "./../../assets/shop/group_656-2x.png";
+import DataMeta from "./../../context/Provider";
 
 const Wrapper = styled.div`
   background-color: #0b1f4f;
@@ -57,10 +58,10 @@ const TokenName = styled.div`
 `;
 
 const Balance = styled.div`
-  font: normal normal bold 40px Poppins;
+  font: normal normal bold 34px Poppins;
   color: white;
   @media (max-width: 768px) {
-    font: normal normal bold 28px Poppins;
+    font: normal normal bold 20px Poppins;
   }
 `;
 
@@ -87,15 +88,17 @@ const Icon = styled.img`
 `;
 
 export const HeaderShop = () => {
+  const _meta = useContext(DataMeta);
+
   return (
     <Wrapper className="row mx-0">
       <div className="col-12 col-sm-12 col-md-6 d-flex pb-md-0 pb-3 pb-sm-3">
-        <WrapperGroup className="me-1 me-md-4 justify-content-center">
+        <WrapperGroup className="me-1 me-md-4 justify-content-center pe-3">
           <ImgResponsive src={ICON_FIFA} />
           <Divider />
           <div>
             <TokenName className="mt-2">FIFA</TokenName>
-            <Balance>0</Balance>
+            <Balance>{(_meta.balanceFF).toFixed(2)}</Balance>
           </div>
         </WrapperGroup>
         <WrapperGroup className="ms-1 ms-md-4 justify-content-center">
@@ -103,7 +106,7 @@ export const HeaderShop = () => {
           <Divider />
           <div>
             <TokenName className="mt-2 text-warning">BNB</TokenName>
-            <Balance>0</Balance>
+            <Balance>{(_meta.balance).toFixed(2)}</Balance>
           </div>
         </WrapperGroup>
       </div>

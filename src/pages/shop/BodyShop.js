@@ -1,9 +1,22 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
 import ICON_FF from "./../../assets/shop/icon-token-fifa-mini.png";
-import { byCard } from "./../../web3/shop.mjs";
+import { buyCard } from "./../../web3/shop.mjs";
 import meta from "./../../context/Provider";
-import { CHAIN_ID } from "./../../const/const";
+import {
+  CHAIN_ID,
+  TOP_10_PRICE,
+  TOP_20_PRICE,
+  TOP_30_PRICE,
+  TOP_50_PRICE,
+  TOP_100_PRICE,
+  TOP_200_PRICE,
+  DIAMOND_PRICE,
+  GOLD_PRICE,
+  PLATIUM_PRICE,
+  ALL_PRICE,
+} from "./../../const/const";
+
 import { HeaderShop } from "./HeaderShop";
 import DIAMOND from "./../../assets/shop-1/diamond.png";
 import GOLD from "./../../assets/shop-1/gold.png";
@@ -15,6 +28,15 @@ import TOP50 from "./../../assets/shop-1/50.png";
 import TOP100 from "./../../assets/shop-1/100.png";
 import TOP200 from "./../../assets/shop-1/200.png";
 import ALL from "./../../assets/shop-1/all.png";
+
+import {
+  getPriceTop10,
+  getPriceTop20,
+  getPriceTop30,
+  getPriceTop50,
+  getPriceTop100,
+  getPriceTop200,
+} from "./../../web3/shop.mjs";
 
 import { ModalBuy } from "./modal";
 
@@ -78,12 +100,16 @@ const BodyShop = () => {
     false,
   ]);
 
+  const [price, setPrice] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+
+  useEffect(() => {}, []);
+
   const handleByCard = async (_topKey, _amount, index) => {
     let _isLoading = [false, false, false, false, false];
     _isLoading[index] = true;
     setIsLoading(_isLoading);
     try {
-      const txi = await byCard(_meta.web3, _meta.address, _topKey, _amount);
+      const txi = await buyCard(_meta.web3, _meta.address, _topKey, _amount);
       setIsLoading([false, false, false, false, false]);
     } catch (error) {
       _isLoading[index] = false;
@@ -107,9 +133,7 @@ const BodyShop = () => {
         <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 gy-4">
           <div className="col">
             <WrapperBox
-              onClick={(e) =>
-                handleBuy({ name: "GOLD BOX", price: 20, imgName: "GOLD" })
-              }
+              onClick={(e) => handleBuy({ key: "gold", price: GOLD_PRICE })}
             >
               <div>
                 <Title>GOLD BOX</Title>
@@ -118,12 +142,12 @@ const BodyShop = () => {
                 <ResponsiveImage className="hover-item" src={GOLD} />
               </div>
               <div className="d-flex justify-content-between">
-                <div>
+                <div className="d-flex align-items-center">
                   <Content>#1021112661</Content>
-                  <Content>
+                  {/* <Content>
                     <span style={{ opacity: 0.7 }}>FIFA:</span>{" "}
                     <span className="fw-bold">360/72H</span>
-                  </Content>
+                  </Content> */}
                 </div>
                 <div className="d-flex">
                   <ResponsiveIcon src={ICON_FF} className="me-1 my-auto" />
@@ -131,7 +155,7 @@ const BodyShop = () => {
                     className="fw-bold my-auto"
                     style={{ color: "rgba(57, 181, 74, 1)" }}
                   >
-                    20
+                    {GOLD_PRICE}
                   </WrapperPrice>
                 </div>
               </div>
@@ -140,7 +164,10 @@ const BodyShop = () => {
           <div className="col">
             <WrapperBox
               onClick={(e) =>
-                handleBuy({ name: "PLATIUM BOX", price: 10, imgName: "PLATIUM" })
+                handleBuy({
+                  key: "platium",
+                  price: PLATIUM_PRICE,
+                })
               }
             >
               <div>
@@ -150,12 +177,12 @@ const BodyShop = () => {
                 <ResponsiveImage className="hover-item" src={PLATIUM} />
               </div>
               <div className="d-flex justify-content-between">
-                <div>
+                <div className="d-flex align-items-center">
                   <Content>#1021112661</Content>
-                  <Content>
+                  {/* <Content>
                     <span style={{ opacity: 0.7 }}>FIFA:</span>{" "}
                     <span className="fw-bold">360/72H</span>
-                  </Content>
+                  </Content> */}
                 </div>
                 <div className="d-flex">
                   <ResponsiveIcon src={ICON_FF} className="me-1 my-auto" />
@@ -163,7 +190,7 @@ const BodyShop = () => {
                     className="fw-bold my-auto"
                     style={{ color: "rgba(57, 181, 74, 1)" }}
                   >
-                    20
+                    {PLATIUM_PRICE}
                   </WrapperPrice>
                 </div>
               </div>
@@ -172,7 +199,7 @@ const BodyShop = () => {
           <div className="col">
             <WrapperBox
               onClick={(e) =>
-                handleBuy({ name: "GOLD BOX", price: 20, imgName: "GOLD" })
+                handleBuy({ key: "diamond", price: DIAMOND_PRICE })
               }
             >
               <div>
@@ -182,12 +209,12 @@ const BodyShop = () => {
                 <ResponsiveImage className="hover-item" src={DIAMOND} />
               </div>
               <div className="d-flex justify-content-between">
-                <div>
+                <div className="d-flex align-items-center">
                   <Content>#1021112661</Content>
-                  <Content>
+                  {/* <Content>
                     <span style={{ opacity: 0.7 }}>FIFA:</span>{" "}
                     <span className="fw-bold">360/72H</span>
-                  </Content>
+                  </Content> */}
                 </div>
                 <div className="d-flex">
                   <ResponsiveIcon src={ICON_FF} className="me-1 my-auto" />
@@ -195,7 +222,7 @@ const BodyShop = () => {
                     className="fw-bold my-auto"
                     style={{ color: "rgba(57, 181, 74, 1)" }}
                   >
-                    20
+                    {DIAMOND_PRICE}
                   </WrapperPrice>
                 </div>
               </div>
@@ -203,9 +230,7 @@ const BodyShop = () => {
           </div>
           <div className="col">
             <WrapperBox
-              onClick={(e) =>
-                handleBuy({ name: "GOLD BOX", price: 20, imgName: "GOLD" })
-              }
+              onClick={(e) => handleBuy({ key: "top10", price: TOP_10_PRICE })}
             >
               <div>
                 <Title>TOP 10</Title>
@@ -215,11 +240,11 @@ const BodyShop = () => {
               </div>
               <div className="d-flex justify-content-between">
                 <div>
-                  <Content>#1021112661</Content>
-                  <Content>
+                  <Content className="d-flex align-items-center">#1021112661</Content>
+                  {/* <Content>
                     <span style={{ opacity: 0.7 }}>FIFA:</span>{" "}
                     <span className="fw-bold">360/72H</span>
-                  </Content>
+                  </Content> */}
                 </div>
                 <div className="d-flex">
                   <ResponsiveIcon src={ICON_FF} className="me-1 my-auto" />
@@ -227,7 +252,7 @@ const BodyShop = () => {
                     className="fw-bold my-auto"
                     style={{ color: "rgba(57, 181, 74, 1)" }}
                   >
-                    20
+                    {TOP_10_PRICE}
                   </WrapperPrice>
                 </div>
               </div>
@@ -235,9 +260,7 @@ const BodyShop = () => {
           </div>
           <div className="col">
             <WrapperBox
-              onClick={(e) =>
-                handleBuy({ name: "GOLD BOX", price: 20, imgName: "GOLD" })
-              }
+              onClick={(e) => handleBuy({ key: "top20", price: TOP_20_PRICE })}
             >
               <div>
                 <Title>TOP 20</Title>
@@ -247,11 +270,11 @@ const BodyShop = () => {
               </div>
               <div className="d-flex justify-content-between">
                 <div>
-                  <Content>#1021112661</Content>
-                  <Content>
+                  <Content className="d-flex align-items-center">#1021112661</Content>
+                  {/* <Content>
                     <span style={{ opacity: 0.7 }}>FIFA:</span>{" "}
                     <span className="fw-bold">360/72H</span>
-                  </Content>
+                  </Content> */}
                 </div>
                 <div className="d-flex">
                   <ResponsiveIcon src={ICON_FF} className="me-1 my-auto" />
@@ -259,7 +282,7 @@ const BodyShop = () => {
                     className="fw-bold my-auto"
                     style={{ color: "rgba(57, 181, 74, 1)" }}
                   >
-                    20
+                    {TOP_20_PRICE}
                   </WrapperPrice>
                 </div>
               </div>
@@ -267,9 +290,7 @@ const BodyShop = () => {
           </div>
           <div className="col">
             <WrapperBox
-              onClick={(e) =>
-                handleBuy({ name: "GOLD BOX", price: 20, imgName: "GOLD" })
-              }
+              onClick={(e) => handleBuy({ key: "top30", price: TOP_30_PRICE })}
             >
               <div>
                 <Title>TOP 30</Title>
@@ -279,11 +300,11 @@ const BodyShop = () => {
               </div>
               <div className="d-flex justify-content-between">
                 <div>
-                  <Content>#1021112661</Content>
-                  <Content>
+                  <Content className="d-flex align-items-center">#1021112661</Content>
+                  {/* <Content>
                     <span style={{ opacity: 0.7 }}>FIFA:</span>{" "}
                     <span className="fw-bold">360/72H</span>
-                  </Content>
+                  </Content> */}
                 </div>
                 <div className="d-flex">
                   <ResponsiveIcon src={ICON_FF} className="me-1 my-auto" />
@@ -291,7 +312,7 @@ const BodyShop = () => {
                     className="fw-bold my-auto"
                     style={{ color: "rgba(57, 181, 74, 1)" }}
                   >
-                    20
+                    {TOP_30_PRICE}
                   </WrapperPrice>
                 </div>
               </div>
@@ -299,9 +320,7 @@ const BodyShop = () => {
           </div>
           <div className="col">
             <WrapperBox
-              onClick={(e) =>
-                handleBuy({ name: "GOLD BOX", price: 20, imgName: "GOLD" })
-              }
+              onClick={(e) => handleBuy({ key: "top50", price: TOP_50_PRICE })}
             >
               <div>
                 <Title>TOP 50</Title>
@@ -310,12 +329,12 @@ const BodyShop = () => {
                 <ResponsiveImage className="hover-item" src={TOP50} />
               </div>
               <div className="d-flex justify-content-between">
-                <div>
+                <div className="d-flex align-items-center">
                   <Content>#1021112661</Content>
-                  <Content>
+                  {/* <Content>
                     <span style={{ opacity: 0.7 }}>FIFA:</span>{" "}
                     <span className="fw-bold">360/72H</span>
-                  </Content>
+                  </Content> */}
                 </div>
                 <div className="d-flex">
                   <ResponsiveIcon src={ICON_FF} className="me-1 my-auto" />
@@ -323,7 +342,7 @@ const BodyShop = () => {
                     className="fw-bold my-auto"
                     style={{ color: "rgba(57, 181, 74, 1)" }}
                   >
-                    20
+                    {TOP_50_PRICE}
                   </WrapperPrice>
                 </div>
               </div>
@@ -332,7 +351,7 @@ const BodyShop = () => {
           <div className="col">
             <WrapperBox
               onClick={(e) =>
-                handleBuy({ name: "GOLD BOX", price: 20, imgName: "GOLD" })
+                handleBuy({ key: "top100", price: TOP_100_PRICE })
               }
             >
               <div>
@@ -343,11 +362,11 @@ const BodyShop = () => {
               </div>
               <div className="d-flex justify-content-between">
                 <div>
-                  <Content>#1021112661</Content>
-                  <Content>
+                  <Content className="d-flex align-items-center">#1021112661</Content>
+                  {/* <Content>
                     <span style={{ opacity: 0.7 }}>FIFA:</span>{" "}
                     <span className="fw-bold">360/72H</span>
-                  </Content>
+                  </Content> */}
                 </div>
                 <div className="d-flex">
                   <ResponsiveIcon src={ICON_FF} className="me-1 my-auto" />
@@ -355,7 +374,7 @@ const BodyShop = () => {
                     className="fw-bold my-auto"
                     style={{ color: "rgba(57, 181, 74, 1)" }}
                   >
-                    20
+                    {TOP_100_PRICE}
                   </WrapperPrice>
                 </div>
               </div>
@@ -364,7 +383,7 @@ const BodyShop = () => {
           <div className="col">
             <WrapperBox
               onClick={(e) =>
-                handleBuy({ name: "GOLD BOX", price: 20, imgName: "GOLD" })
+                handleBuy({ key: "top200", price: TOP_200_PRICE })
               }
             >
               <div>
@@ -375,11 +394,11 @@ const BodyShop = () => {
               </div>
               <div className="d-flex justify-content-between">
                 <div>
-                  <Content>#1021112661</Content>
-                  <Content>
+                  <Content className="d-flex align-items-center">#1021112661</Content>
+                  {/* <Content>
                     <span style={{ opacity: 0.7 }}>FIFA:</span>{" "}
                     <span className="fw-bold">360/72H</span>
-                  </Content>
+                  </Content> */}
                 </div>
                 <div className="d-flex">
                   <ResponsiveIcon src={ICON_FF} className="me-1 my-auto" />
@@ -387,7 +406,7 @@ const BodyShop = () => {
                     className="fw-bold my-auto"
                     style={{ color: "rgba(57, 181, 74, 1)" }}
                   >
-                    20
+                    {TOP_200_PRICE}
                   </WrapperPrice>
                 </div>
               </div>
@@ -395,9 +414,7 @@ const BodyShop = () => {
           </div>
           <div className="col">
             <WrapperBox
-              onClick={(e) =>
-                handleBuy({ name: "GOLD BOX", price: 20, imgName: "GOLD" })
-              }
+              onClick={(e) => handleBuy({ key: "all", price: ALL_PRICE })}
             >
               <div>
                 <Title>ALL</Title>
@@ -407,11 +424,11 @@ const BodyShop = () => {
               </div>
               <div className="d-flex justify-content-between">
                 <div>
-                  <Content>#1021112661</Content>
-                  <Content>
+                  <Content className="d-flex align-items-center">#1021112661</Content>
+                  {/* <Content>
                     <span style={{ opacity: 0.7 }}>FIFA:</span>{" "}
                     <span className="fw-bold">360/72H</span>
-                  </Content>
+                  </Content> */}
                 </div>
                 <div className="d-flex">
                   <ResponsiveIcon src={ICON_FF} className="me-1 my-auto" />
@@ -419,7 +436,7 @@ const BodyShop = () => {
                     className="fw-bold my-auto"
                     style={{ color: "rgba(57, 181, 74, 1)" }}
                   >
-                    20
+                    {ALL_PRICE}
                   </WrapperPrice>
                 </div>
               </div>

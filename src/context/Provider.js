@@ -8,6 +8,7 @@ import {
   initWeb3,
 } from "./../web3/login.mjs";
 import { isEmpty } from "lodash";
+import { getBalanceFIFA } from "./../web3/shop.mjs";
 
 const MetaConnect = createContext();
 
@@ -17,6 +18,7 @@ export const MetaProvider = ({ children }) => {
   const [address, setAddress] = useState("");
   const [chainId, setChainId] = useState(null);
   const [balance, setBalance] = useState(0);
+  const [balanceFF, setBalanceFF] = useState(0);
 
   if (typeof window.ethereum !== "undefined") {
     window.ethereum.on("accountsChanged", (accounts) => {
@@ -29,6 +31,9 @@ export const MetaProvider = ({ children }) => {
           getBalance(web3, accounts[0]).then((_balance) =>
             setBalance(Number(_balance) / Math.pow(10, 18))
           );
+        getBalanceFIFA(web3, accounts[0]).then((amount) =>
+          setBalanceFF(Number(amount) / Math.pow(10, 18))
+        );
       }
     });
 
@@ -38,6 +43,9 @@ export const MetaProvider = ({ children }) => {
         getBalance(web3, address).then((_balance) => {
           setBalance(Number(_balance) / Math.pow(10, 18));
         });
+        getBalanceFIFA(web3, address).then((amount) =>
+          setBalanceFF(Number(amount) / Math.pow(10, 18))
+        );
       } else {
         setBalance(0);
       }
@@ -64,6 +72,9 @@ export const MetaProvider = ({ children }) => {
           getBalance(web3, _address).then((amount) =>
             setBalance(Number(amount) / Math.pow(10, 18))
           );
+          getBalanceFIFA(web3, _address).then((amount) =>
+            setBalanceFF(Number(amount) / Math.pow(10, 18))
+          );
         }
       });
     }
@@ -81,11 +92,13 @@ export const MetaProvider = ({ children }) => {
         balance,
         address,
         web3,
+        balanceFF,
         setIsConnected,
         setChainId,
         setBalance,
         setAddress,
         setWeb3,
+        setBalanceFF,
       }}
     >
       {children}

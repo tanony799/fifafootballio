@@ -7,6 +7,7 @@ import {
 } from "./../const/const";
 import { FIFA_TOKEN_ABI, FIFA_SALE_ABI } from "./abi.mjs";
 import { genContract, approve, allowance } from "./utils.mjs";
+import { getBalanceTokenERC20 } from "./utils.mjs";
 
 const approveFIFA = async (_web3, _from) => {
   return await approve(
@@ -23,10 +24,44 @@ const allowanceFIFA = async (_web3, _from) => {
   return await allowance(_web3, FIFA_TOKEN_ABI, FIFA_TOKEN, FIFA_SALE, _from);
 };
 
-const byCard = async (_web3, _from, _topKey, _amountItems) => {
+const getPriceTop10 = async (_web3) => {
+  const ctract = genContract(_web3, FIFA_SALE_ABI, FIFA_SALE);
+  return await ctract.methods.top10PackPrice().call();
+};
+
+const getPriceTop20 = async (_web3) => {
+  const ctract = genContract(_web3, FIFA_SALE_ABI, FIFA_SALE);
+  return await ctract.methods.top20PackPrice().call();
+};
+
+const getPriceTop30 = async (_web3) => {
+  const ctract = genContract(_web3, FIFA_SALE_ABI, FIFA_SALE);
+  return await ctract.methods.top30PackPrice().call();
+};
+
+const getPriceTop50 = async (_web3) => {
+  const ctract = genContract(_web3, FIFA_SALE_ABI, FIFA_SALE);
+  return await ctract.methods.top50PackPrice().call();
+};
+
+const getPriceTop100 = async (_web3) => {
+  const ctract = genContract(_web3, FIFA_SALE_ABI, FIFA_SALE);
+  return await ctract.methods.top100PackPrice().call();
+};
+
+const getPriceTop200 = async (_web3) => {
+  const ctract = genContract(_web3, FIFA_SALE_ABI, FIFA_SALE);
+  return await ctract.methods.top200PackPrice().call();
+};
+
+const getBalanceFIFA = async (_web3, _from) => {
+  return await getBalanceTokenERC20(_web3, FIFA_TOKEN_ABI, FIFA_TOKEN, _from);
+};
+
+const buyCard = async (_web3, _from, _topKey, _amountItems) => {
   const txi = {};
 
-  const ctract = await genContract(_web3, FIFA_SALE_ABI, FIFA_SALE);
+  const ctract = genContract(_web3, FIFA_SALE_ABI, FIFA_SALE);
 
   const _allowance = await allowanceFIFA(_web3, _from);
 
@@ -52,4 +87,14 @@ const byCard = async (_web3, _from, _topKey, _amountItems) => {
   return txi;
 };
 
-export { byCard, approveFIFA };
+export {
+  buyCard,
+  approveFIFA,
+  getPriceTop10,
+  getPriceTop20,
+  getPriceTop30,
+  getPriceTop50,
+  getPriceTop100,
+  getPriceTop200,
+  getBalanceFIFA,
+};
