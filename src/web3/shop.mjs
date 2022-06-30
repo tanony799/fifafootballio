@@ -55,6 +55,7 @@ const getPriceTop200 = async (_web3) => {
 };
 
 const getBalanceFIFA = async (_web3, _from) => {
+  if (!_from) return 0;
   return await getBalanceTokenERC20(_web3, FIFA_TOKEN_ABI, FIFA_TOKEN, _from);
 };
 

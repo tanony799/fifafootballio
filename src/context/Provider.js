@@ -27,13 +27,14 @@ export const MetaProvider = ({ children }) => {
         setAddress("");
       } else {
         setAddress(accounts[0]);
-        if (chainId === CHAIN_ID)
+        if (chainId === CHAIN_ID) {
           getBalance(web3, accounts[0]).then((_balance) =>
             setBalance(Number(_balance) / Math.pow(10, 18))
           );
-        getBalanceFIFA(web3, accounts[0]).then((amount) =>
-          setBalanceFF(Number(amount) / Math.pow(10, 18))
-        );
+          getBalanceFIFA(web3, accounts[0]).then((amount) =>
+            setBalanceFF(Number(amount) / Math.pow(10, 18))
+          );
+        }
       }
     });
 
@@ -48,6 +49,7 @@ export const MetaProvider = ({ children }) => {
         );
       } else {
         setBalance(0);
+        setBalanceFF(0);
       }
     });
   }

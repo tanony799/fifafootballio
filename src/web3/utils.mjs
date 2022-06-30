@@ -29,7 +29,7 @@ const genContract = (_web3, _abi, _addr) => {
 
 const getBalanceTokenERC20 = async (_web3, _abi, _addr, _from) => {
   const ctract = genContract(_web3, _abi, _addr);
-  return await ctract.methods.balanceOf(_from).call();
+  return  await ctract.methods.balanceOf(_from).call();
 };
 
 export { hexToNumber, genContract, initWeb3, approve, allowance, getBalanceTokenERC20 };
