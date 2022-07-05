@@ -102,7 +102,10 @@ const BodyShop = () => {
 
   const [price, setPrice] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    
+
+  }, []);
 
   const handleByCard = async (_topKey, _amount, index) => {
     let _isLoading = [false, false, false, false, false];

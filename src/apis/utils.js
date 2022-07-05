@@ -1,4 +1,5 @@
 import Axios from "axios";
+import { TOKEN } from "./../const/const";
 
 const postData = async (url, params = {}) => {
   const _data = null;
@@ -9,6 +10,7 @@ const postData = async (url, params = {}) => {
     },
     {
       headers: {
+        Authorization: `token ${TOKEN}`,
         accept: "application/json",
       },
     }
@@ -24,7 +26,7 @@ const postData = async (url, params = {}) => {
 const getData = async (url) => {
   await Axios.get(url, {
     headers: {
-      Authorization: `token ${token}`,
+      Authorization: `token ${TOKEN}`,
     },
   })
     .then((e) => {

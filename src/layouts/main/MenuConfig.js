@@ -18,6 +18,7 @@ import telegramIcon from "../../assets/icons/tele.svg";
 import twitterIcon from "../../assets/icons/twitter.svg";
 import reditIcon from "../../assets/icons/reddit.svg";
 import mediumIcon from "../../assets/icons/medium.svg";
+import discordIcon from "../../assets/icons/discord-01.svg";
 
 // ----------------------------------------------------------------------
 
@@ -51,6 +52,11 @@ const ICON_TWITTER_SIZE = {
   height: 18,
 };
 
+const ICON_DISCORD_SIZE = {
+  width: 22,
+  height: 18,
+};
+
 const menuConfig = [
   {
     title: "twitter",
@@ -76,6 +82,11 @@ const menuConfig = [
     title: "Youtube",
     icon: <img src={youtubeIcon} {...ICON_YOUTUBE_SIZE} />,
     path: "https://www.youtube.com/watch?v=MbI1qYA-4IE",
+  },
+  {
+    title: "Discord",
+    icon: <img src={discordIcon} {...ICON_DISCORD_SIZE} />,
+    path: "https://discord.gg/43PuqVBV",
   },
   // {
   //   title: "Medium",

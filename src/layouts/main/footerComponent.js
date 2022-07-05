@@ -5,6 +5,7 @@ import mediumIcon from "../../assets/icons/medium.svg";
 import facebookIcon from "../../assets/icons/Facebook.svg";
 import telegramIcon from "../../assets/icons/tele.svg";
 import twitterIcon from "../../assets/icons/twitter.svg";
+import discordIcon from "../../assets/icons/discord-01.svg";
 import logo from "../../assets/icons/logo.png";
 import styled from "styled-components";
 
@@ -14,6 +15,7 @@ const LINK_FB = "https://www.facebook.com/FiFafootball.io";
 const LINK_REDDIT = "https://www.reddit.com/r/FiFafootball2022";
 const LINK_YT = "https://www.youtube.com/watch?v=MbI1qYA-4IE";
 // const LINK_MEDIUM = "https://medium.com/@FIFAFootball";
+const LINK_DISCORD = "https://discord.com/invite/43PuqVBV";
 
 const Wrapper = styled.div``;
 
@@ -97,8 +99,17 @@ const Footer = () => {
                   <Icon src={reditIcon} />
                 </a>
               </div>
+              <div className="col">
+                <a
+                  href={LINK_DISCORD}
+                  alt="dc"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Icon src={discordIcon} />
+                </a>
+              </div>
             </div>
-
             <Text>@2022 FIFA Football, all rights reserved</Text>
           </div>
         </div>
