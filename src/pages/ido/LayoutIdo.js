@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { styled, alpha, useTheme } from "@mui/material/styles";
@@ -27,6 +27,7 @@ import iconShop from "../../assets/icons/shop.png";
 import iconMarket from "../../assets/icons/market.png";
 import iconIdo from "../../assets/icons/ido.png";
 import iconDollar from "../../assets/icons/dollar.png";
+import MetaConnect from "./../../context/Provider";
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
   position: "relative",
@@ -82,7 +83,7 @@ const CardInfoStyle = styled(Card)(({ theme }) => {
     minHeight: 450,
     margin: "auto",
     textAlign: "center",
-    opacity: 0.6,
+    opacity: 1,
     padding: theme.spacing(2),
     [theme.breakpoints.up("md")]: {
       backgroundColor: "rgba(9, 20, 48, 1)",
@@ -156,6 +157,7 @@ const FormContainer = styled("div")(({ theme }) => ({
 }));
 
 export default function LayoutIdo() {
+  const _meta = useContext(MetaConnect);
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
   const navigate = useNavigate();
@@ -164,6 +166,8 @@ export default function LayoutIdo() {
   const handleChangeInput = (e) => {
     setValAmount(e.target.value);
   };
+
+  console.log("tesss meta->", _meta);
 
   const renderBtnAction = (item) => {
     const { icon, title, backGroundBtn } = item || {};
@@ -348,7 +352,7 @@ export default function LayoutIdo() {
                         font: "normal normal bold 40px Poppins",
                       }}
                     >
-                      {"ROUND A OF SALE"}
+                      {"PRIVATE SALE"}
                     </Typography>
                     <SpaceBetweenContainer>
                       <Typography
@@ -371,7 +375,7 @@ export default function LayoutIdo() {
                           textAlign: "right",
                         }}
                       >
-                        {`Balance: ${valAmount}BNB`}
+                        {`Balance: ${_meta.balance.toFixed(4)} BNB`}
                       </Typography>
                     </SpaceBetweenContainer>
                     <OutlinedInput
@@ -410,7 +414,7 @@ export default function LayoutIdo() {
                           textAlign: "left",
                         }}
                       >
-                        {"Pre-Sale Price"}
+                        {"Private Sale"}
                       </Typography>
                       <Typography
                         style={{
@@ -430,7 +434,7 @@ export default function LayoutIdo() {
                           textAlign: "right",
                         }}
                       >
-                        {`1 FIFA ≈ $0.003331`}
+                        {`1 FIFA ≈ $0.007`}
                       </Typography>
                     </AmountTranferContainer>
                     {renderBtnAction({

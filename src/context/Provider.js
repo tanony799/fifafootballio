@@ -25,6 +25,8 @@ export const MetaProvider = ({ children }) => {
       if (isEmpty(accounts)) {
         setIsConnected(false);
         setAddress("");
+        setBalance(0);
+        setBalanceFF(0);
       } else {
         setAddress(accounts[0]);
         if (chainId === CHAIN_ID) {

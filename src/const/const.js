@@ -10,6 +10,8 @@ export const FIFA_SALE = "0x98246c438420a3C7ABDA27B5C9B68aEB8F80f33A";
 
 export const IDO_CONTRACT = "0x888bBFb9733D58134E003c99240b8a26c8ac94b4"
 
+export const BUSD_TOKEN = "0x35979BD8fe482Cec16f0d2D283CbD33905c40e8F"
+
 // export const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 export const TOKEN = "";
