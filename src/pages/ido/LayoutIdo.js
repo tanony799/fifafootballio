@@ -28,6 +28,15 @@ import iconMarket from "../../assets/icons/market.png";
 import iconIdo from "../../assets/icons/ido.png";
 import iconDollar from "../../assets/icons/dollar.png";
 import MetaConnect from "./../../context/Provider";
+import styled2 from "styled-components";
+import { buyToken } from "./../../web3/ido.mjs";
+import { getBalanceBUSD } from "./../../web3/ido.mjs";
+
+const BtnBuy = styled2.div`
+ &: hover {
+  cursor: pointer;
+ }
+`;
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
   position: "relative",
@@ -45,8 +54,8 @@ const RootStyle = styled(motion.div)(({ theme }) => ({
 }));
 
 const CardStyle = styled(Card)(({ theme }) => {
-  const shadowCard = (opacity) => 
-    theme.palette.mode === "light" 
+  const shadowCard = (opacity) =>
+    theme.palette.mode === "light"
       ? alpha(theme.palette.grey[500], opacity)
       : alpha(theme.palette.common.black, opacity);
 
@@ -161,18 +170,55 @@ export default function LayoutIdo() {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
   const navigate = useNavigate();
-  const [valAmount, setValAmount] = useState("");
+  const [valAmount, setValAmount] = useState(1000);
+  const [isBuying, setIsBuying] = useState(false);
 
   const handleChangeInput = (e) => {
     setValAmount(e.target.value);
   };
 
-  console.log("tesss meta->", _meta);
+  const formatNumber = (_number) => {
+    _number = _number.toString();
+    if (_number.indexOf(".") > 0) {
+      let _countNumberAfterDot = _number.Length - _number.IndexOf(".") - 1;
+      let _remainNumber0 = 18 - _countNumberAfterDot;
+      let _stringRemainNumber0 = "";
+
+      for (let i = 0; i < _remainNumber0; i++) {
+        _stringRemainNumber0 = _stringRemainNumber0 + "0";
+      }
+
+      return _number.replace(".", "") + _stringRemainNumber0;
+    } else return _number + "000000000000000000";
+  };
+
+  const handleBuy = async () => {
+    if (Number(valAmount) < 1000 || Number(valAmount) > 20000) {
+      window.alert("Invalid Amount!");
+      return;
+    }
+
+    try {
+      setIsBuying(true);
+      const txi = await buyToken(
+        _meta.web3,
+        _meta.address,
+        formatNumber(valAmount)
+      );
+      setIsBuying(false);
+      getBalanceBUSD(_meta.web3, _meta.address).then((e) => {
+        _meta.setBalanceBUSD(Number(e) / Math.pow(10, 18));
+      });
+    } catch (error) {
+      console.log(error);
+      setIsBuying(false);
+    }
+  };
 
   const renderBtnAction = (item) => {
     const { icon, title, backGroundBtn } = item || {};
     return (
-      <div
+      <BtnBuy
         style={{
           width: "100%",
           height: 48,
@@ -180,7 +226,10 @@ export default function LayoutIdo() {
           marginTop: theme.spacing(2),
         }}
       >
-        <ButtonAction backGroundCus={backGroundBtn}>
+        <ButtonAction
+          backGroundCus={backGroundBtn}
+          onClick={(e) => handleBuy()}
+        >
           <Box
             sx={{
               display: "flex",
@@ -202,11 +251,22 @@ export default function LayoutIdo() {
                 font: "normal normal bold 16px Poppins",
               }}
             >
-              {title}
+              {isBuying ? (
+                <>
+                  <span
+                    className="spinner-border spinner-border-sm"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  <span> Buying...</span>
+                </>
+              ) : (
+                title
+              )}
             </Typography>
           </Box>
         </ButtonAction>
-      </div>
+      </BtnBuy>
     );
   };
 
@@ -375,7 +435,7 @@ export default function LayoutIdo() {
                           textAlign: "right",
                         }}
                       >
-                        {`Balance: ${_meta.balance.toFixed(4)} BUSD`}
+                        {`Balance: ${_meta.balanceBUSD.toFixed(1)} BUSD`}
                       </Typography>
                     </SpaceBetweenContainer>
                     <OutlinedInput
@@ -424,7 +484,6 @@ export default function LayoutIdo() {
                         }}
                       >
                         {`Min 1000$ - Max 20000$`}
-                        
                       </Typography>
                     </SpaceBetweenContainer>
                     <AmountTranferContainer>
@@ -452,7 +511,7 @@ export default function LayoutIdo() {
                           textAlign: "left",
                         }}
                       >
-                        {`Contract: 0xE140c0e943211Cf1094b8dBdE460343bd6049eE4`}
+                        {`Contract: 0xE1...eE4`}
                       </Typography>
                     </AmountTranferContainer>
                     <AmountTranferContainer>

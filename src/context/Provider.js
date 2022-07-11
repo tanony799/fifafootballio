@@ -9,6 +9,7 @@ import {
 } from "./../web3/login.mjs";
 import { isEmpty } from "lodash";
 import { getBalanceFIFA } from "./../web3/shop.mjs";
+import { getBalanceBUSD } from "./../web3/ido.mjs";
 
 const MetaConnect = createContext();
 
@@ -19,6 +20,7 @@ export const MetaProvider = ({ children }) => {
   const [chainId, setChainId] = useState(null);
   const [balance, setBalance] = useState(0);
   const [balanceFF, setBalanceFF] = useState(0);
+  const [balanceBUSD, setBalanceBUSD] = useState(0);
 
   if (typeof window.ethereum !== "undefined") {
     window.ethereum.on("accountsChanged", (accounts) => {
@@ -27,6 +29,7 @@ export const MetaProvider = ({ children }) => {
         setAddress("");
         setBalance(0);
         setBalanceFF(0);
+        setBalanceBUSD(0);
       } else {
         setAddress(accounts[0]);
         if (chainId === CHAIN_ID) {
@@ -35,6 +38,9 @@ export const MetaProvider = ({ children }) => {
           );
           getBalanceFIFA(web3, accounts[0]).then((amount) =>
             setBalanceFF(Number(amount) / Math.pow(10, 18))
+          );
+          getBalanceBUSD(web3, accounts[0]).then((amount) =>
+            setBalanceBUSD(Number(amount) / Math.pow(10, 18))
           );
         }
       }
@@ -49,9 +55,13 @@ export const MetaProvider = ({ children }) => {
         getBalanceFIFA(web3, address).then((amount) =>
           setBalanceFF(Number(amount) / Math.pow(10, 18))
         );
+        getBalanceBUSD(web3, address).then((amount) =>
+          setBalanceBUSD(Number(amount) / Math.pow(10, 18))
+        );
       } else {
         setBalance(0);
         setBalanceFF(0);
+        setBalanceBUSD(0);
       }
     });
   }
@@ -79,6 +89,9 @@ export const MetaProvider = ({ children }) => {
           getBalanceFIFA(web3, _address).then((amount) =>
             setBalanceFF(Number(amount) / Math.pow(10, 18))
           );
+          getBalanceBUSD(web3, _address).then((amount) =>
+            setBalanceBUSD(Number(amount) / Math.pow(10, 18))
+          );
         }
       });
     }
@@ -97,12 +110,14 @@ export const MetaProvider = ({ children }) => {
         address,
         web3,
         balanceFF,
+        balanceBUSD,
         setIsConnected,
         setChainId,
         setBalance,
         setAddress,
         setWeb3,
         setBalanceFF,
+        setBalanceBUSD,
       }}
     >
       {children}

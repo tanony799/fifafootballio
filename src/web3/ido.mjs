@@ -63,12 +63,12 @@ const buyToken = async (_web3, _from, _amount) => {
   return txi;
 };
 
-const isClaim = () => {
+const isClaim = (_web3) => {
   const ctract = genContract(_web3, FIFA_IDO_ABI, IDO_CONTRACT);
   return ctract.methods.isClaimToken().call();
 };
 
-const claimToken = async (_web) => {
+const claimToken = async (_web3, _from) => {
   const txi = {};
 
   const ctract = genContract(_web3, FIFA_IDO_ABI, IDO_CONTRACT);
