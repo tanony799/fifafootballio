@@ -45,8 +45,8 @@ const RootStyle = styled(motion.div)(({ theme }) => ({
 }));
 
 const CardStyle = styled(Card)(({ theme }) => {
-  const shadowCard = (opacity) =>
-    theme.palette.mode === "light"
+  const shadowCard = (opacity) => 
+    theme.palette.mode === "light" 
       ? alpha(theme.palette.grey[500], opacity)
       : alpha(theme.palette.common.black, opacity);
 
@@ -375,7 +375,7 @@ export default function LayoutIdo() {
                           textAlign: "right",
                         }}
                       >
-                        {`Balance: ${_meta.balance.toFixed(4)} BNB`}
+                        {`Balance: ${_meta.balance.toFixed(4)} BUSD`}
                       </Typography>
                     </SpaceBetweenContainer>
                     <OutlinedInput
@@ -399,7 +399,7 @@ export default function LayoutIdo() {
                               textAlign: "right",
                             }}
                           >
-                            {"BNB"}
+                            {"BUSD"}
                           </Typography>
                         </InputAdornment>
                       }
@@ -423,7 +423,8 @@ export default function LayoutIdo() {
                           textAlign: "right",
                         }}
                       >
-                        {`1 BNB = 125000 FIFA`}
+                        {`Min 1000$ - Max 20000$`}
+                        
                       </Typography>
                     </SpaceBetweenContainer>
                     <AmountTranferContainer>
@@ -434,12 +435,12 @@ export default function LayoutIdo() {
                           textAlign: "right",
                         }}
                       >
-                        {`1 FIFA ≈ $0.007`}
+                        {`1 FIFA ≈ $0.06`}
                       </Typography>
                     </AmountTranferContainer>
                     {renderBtnAction({
                       icon: iconDollar,
-                      title: "BUY FIFAFOOTBALL",
+                      title: "BUY FIFA",
                       backGroundBtn:
                         "-webkit-linear-gradient(112deg, rgba(141, 198, 63, 1) 0%, rgba(57, 181, 74, 1) 100%)",
                     })}
@@ -451,7 +452,7 @@ export default function LayoutIdo() {
                           textAlign: "left",
                         }}
                       >
-                        {`Contract: 0x43a1****bA046`}
+                        {`Contract: 0xE140c0e943211Cf1094b8dBdE460343bd6049eE4`}
                       </Typography>
                     </AmountTranferContainer>
                     <AmountTranferContainer>
@@ -462,7 +463,7 @@ export default function LayoutIdo() {
                           textAlign: "left",
                         }}
                       >
-                        {`More: ****`}
+                        {/* {`More: ****`} */}
                       </Typography>
                     </AmountTranferContainer>
                   </FormContainer>
