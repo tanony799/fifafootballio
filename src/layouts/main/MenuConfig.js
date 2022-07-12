@@ -86,7 +86,7 @@ const menuConfig = [
   {
     title: "Discord",
     icon: <img src={discordIcon} {...ICON_DISCORD_SIZE} />,
-    path: "https://discord.gg/43PuqVBV",
+    path: "http://discord.gg/FIFAFootballNFTs",
   },
   // {
   //   title: "Medium",

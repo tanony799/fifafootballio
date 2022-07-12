@@ -14,7 +14,7 @@ const LINK_FB = "https://www.facebook.com/FiFafootball.io";
 const LINK_REDDIT = "https://www.reddit.com/r/FiFafootball2022";
 const LINK_YT = "https://www.youtube.com/watch?v=MbI1qYA-4IE";
 // const LINK_MEDIUM = "https://medium.com/@FIFAFootball";
-const LINK_DISCORD = "https://discord.com/invite/43PuqVBV";
+const LINK_DISCORD = "http://discord.gg/FIFAFootballNFTs";
 
 const Wrapper = styled.div``;
 
