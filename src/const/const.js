@@ -1,4 +1,6 @@
-export const CHAIN_ID = 97;
+// export const CHAIN_ID = 97;
+
+export const CHAIN_ID = 56;
 
 export const AMOUNT_APPROVE = "1000000000000000000000000000";
 
@@ -8,9 +10,15 @@ export const FIFA_TOKEN = "0xE140c0e943211Cf1094b8dBdE460343bd6049eE4";
 
 export const FIFA_SALE = "0x98246c438420a3C7ABDA27B5C9B68aEB8F80f33A";
 
-export const IDO_CONTRACT = "0x888bBFb9733D58134E003c99240b8a26c8ac94b4";
+// export const IDO_CONTRACT = "0x888bBFb9733D58134E003c99240b8a26c8ac94b4";
 
-export const BUSD_TOKEN = "0x35979BD8fe482Cec16f0d2D283CbD33905c40e8F";
+export const IDO_CONTRACT = "0x28B71744D108B2648246D51729a3e401dc7926af";
+
+// export const BUSD_TOKEN = "0x35979BD8fe482Cec16f0d2D283CbD33905c40e8F";
+
+export const BUSD_TOKEN = "0xe9e7cea3dedca5984780bafc599bd69add087d56";
+
+export const PRICE_IDO = 0.06;
 
 // export const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -27,7 +35,3 @@ export const ALL_PRICE = 6;
 export const DIAMOND_PRICE = 50;
 export const GOLD_PRICE = 40;
 export const PLATIUM_PRICE = 30;
-
-//ido
-
-export const PRICE_IDO = 0.06;

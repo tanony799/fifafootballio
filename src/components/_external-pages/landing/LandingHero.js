@@ -251,7 +251,6 @@ export default function LandingHero() {
               justifyContent: "center",
               alignItems: "center",
               alignContent: "center",
-
             }}
           >
             <img
@@ -376,22 +375,38 @@ export default function LandingHero() {
                         {"MARKETPLACE"}
                       </Typography>
                     </MenuItemStyle>
-                    <MenuItemStyle onClick={() => navigate("/")}>
-                      <img
-                        src={iconIdo}
+                    <MenuItemStyle>
+                      <a
+                        href="https://ido.fifafootball.io"
                         style={{
-                          width: 18,
-                          height: 16,
-                          marginRight: 10,
-                          marginLeft: 10,
+                          width: "100%",
+                          textDecoration: "none",
+                          color: "#ffffff",
                         }}
-                        alt="icon-ido"
-                      />
-                      <Typography
-                        style={{ font: "normal normal bold 18px Poppins" }}
+                        className="d-flex"
+                        target="_blank"
+                        rel="noreferrer"
                       >
-                        {"IDO"}
-                      </Typography>
+                        <img
+                          src={iconIdo}
+                          style={{
+                            width: 18,
+                            height: 16,
+                            marginRight: 10,
+                            marginLeft: 10,
+                          }}
+                          className="my-auto"
+                          alt="iconContact"
+                        />
+                        <Typography
+                          style={{
+                            font: "normal normal bold 18px Poppins",
+                            textDecoration: "none !important",
+                          }}
+                        >
+                          {"IDO"}
+                        </Typography>
+                      </a>
                     </MenuItemStyle>
                     <MenuItemStyle>
                       <img
@@ -414,6 +429,7 @@ export default function LandingHero() {
                       <a
                         href="https://docs.fifafootball.io"
                         style={{
+                          width: "100%",
                           textDecoration: "none",
                           color: "#ffffff",
                         }}
@@ -438,7 +454,7 @@ export default function LandingHero() {
                             textDecoration: "none !important",
                           }}
                         >
-                          {"WHITEPP"}
+                          {"WHITEPAPER"}
                         </Typography>
                       </a>
                     </MenuItemStyle>
@@ -447,7 +463,7 @@ export default function LandingHero() {
               </Grid>
             </MHidden>
             {/* Button connect wallet */}
-            <MHidden width="mdUp" >
+            <MHidden width="mdUp">
               <Grid
                 item
                 key={"Button-connect-wallet"}
@@ -514,7 +530,7 @@ export default function LandingHero() {
                       marginLeft: "auto",
                       marginRight: "auto",
                       marginTop: 20,
-                      marginBottom: 30
+                      marginBottom: 30,
                     }}
                     alt="imageLanding1"
                   />
@@ -566,7 +582,11 @@ export default function LandingHero() {
                       "Connect your wallet, play with your friends and socialize while making money. Whether you are solely trading your characters or rooms on the marketplace or you are more interested in battling with friends, Fifa Football has it all. Landsale coming soon!"
                     }
                   </ContentStyle>
-                  <Grid container spacing={isDesktop ? 4 : 2}sx={{ marginBottom: 10 }}>
+                  <Grid
+                    container
+                    spacing={isDesktop ? 4 : 2}
+                    sx={{ marginBottom: 10 }}
+                  >
                     <Grid key={"NFT-btn-IOS"} item xs={12} md={4}>
                       {renderBtnDevices({
                         icon: iconIOS,

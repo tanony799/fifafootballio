@@ -398,7 +398,7 @@ export default function LayoutIdo() {
                             textDecoration: "none !important",
                           }}
                         >
-                          {"WHITEPP"}
+                          {"WHITEPAPER"}
                         </Typography>
                       </a>
                     </MenuItemStyle>

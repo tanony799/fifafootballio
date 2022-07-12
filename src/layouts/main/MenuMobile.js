@@ -92,7 +92,7 @@ const menuPage = [
   { title: "MARKETPLACE", pathName: "/market", icon: iconMarket },
   { title: "IDO", pathName: "/ido", icon: iconIdo },
   { title: "MY NFTS", pathName: "/my-nft", icon: iconMyNFTS },
-  { title: "WHITEPP", pathName: "/intro", icon: iconContact },
+  { title: "WHITEPAPER", pathName: "/intro", icon: iconContact },
 ];
 
 // ----------------------------------------------------------------------
@@ -160,12 +160,18 @@ export default function MenuMobile({ isOffset, isHome, navConfig }) {
                   key={`menu-item-${pathName}`}
                   isFocus={pathName === pathname}
                   onClick={() =>
-                    title === "WHITEPP" ? null : navigate(pathName)
+                    title === "WHITEPAPER" || title === "IDO"
+                      ? null
+                      : navigate(pathName)
                   }
                 >
-                  {title === "WHITEPP" ? (
+                  {title === "WHITEPAPER" || title === "IDO" ? (
                     <a
-                      href="https://docs.fifafootball.io"
+                      href={
+                        title === "WHITEPAPER"
+                          ? `https://docs.fifafootball.io`
+                          : `https://ido.fifafootball.io`
+                      }
                       style={{
                         textDecoration: "none",
                         color: "#ffffff",
