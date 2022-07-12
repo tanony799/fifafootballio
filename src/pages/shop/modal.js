@@ -1,4 +1,3 @@
-import { style } from "@mui/system";
 import React, { useEffect, useState, useContext } from "react";
 import Modal from "react-modal";
 import styled from "styled-components";
@@ -150,19 +149,13 @@ function ModalBuy(props) {
   const [modalIsOpen, setIsOpen] = React.useState(props.isOpen);
   const [dataBuy, setDataBuy] = React.useState(props.dataBuy);
 
-  console.log("tess meta connect->", _meta);
   useEffect(() => {
     setIsOpen(props.isOpen);
   }, [props.isOpen]);
 
   useEffect(() => {
     setDataBuy(props.dataBuy);
-    console.log("tesss databuy->", props.dataBuy);
   }, [props.dataBuy]);
-
-  function afterOpenModal() {
-    subtitle.style.color = "#f00";
-  }
 
   function closeModal() {
     setIsOpen(false);
@@ -184,13 +177,7 @@ function ModalBuy(props) {
   };
 
   const handleBuy = async () => {
-    console.log(
-      "tess param->",
-      _meta.web3,
-      _meta.address,
-      MAP_DATA[dataBuy.key]["key"],
-      amount
-    );
+    
     try {
       setIsBuying(true);
       const txi = await buyCard(
@@ -199,7 +186,6 @@ function ModalBuy(props) {
         MAP_DATA[dataBuy.key]["key"],
         amount
       );
-      console.log("tess buy", txi);
       setIsBuying(false);
     } catch (error) {
       setIsBuying(false);
@@ -249,7 +235,7 @@ function ModalBuy(props) {
                 <BtnAddClose onClick={handleMin}>-</BtnAddClose>
                 <Input
                   onChange={handleChange}
-                  value={amount}
+                  value={amount} 
                   type="number"
                   className="mx-2"
                 />

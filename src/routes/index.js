@@ -38,8 +38,8 @@ export default function Router() {
       element: <MainLayout />,
       children: [
         { element: <LandingPage /> },
-        { path: 'ido', element: <IdoPage /> },
-        { path: 'shop-t-bsc-1102', element: <ShopPage /> },
+        // { path: 'ido', element: <IdoPage /> },
+        // { path: 'shop-t-bsc-1102', element: <ShopPage /> },
         { path: '404', element: <NotFound /> },
       ]
     },
@@ -48,6 +48,4 @@ export default function Router() {
 }
 
 const LandingPage = Loadable(lazy(() => import('../pages/LandingPage')));
-const IdoPage = Loadable(lazy(() => import('../pages/ido')));
-const ShopPage = Loadable(lazy(() => import('../pages/shop')));
 const NotFound = Loadable(lazy(() => import('../pages/Page404')));

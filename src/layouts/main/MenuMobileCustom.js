@@ -1,22 +1,12 @@
 import PropTypes from "prop-types";
-import { Icon } from "@iconify/react";
-import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { NavLink as RouterLink, useLocation } from "react-router-dom";
-import arrowIosUpwardFill from "@iconify/icons-eva/arrow-ios-upward-fill";
-import arrowIosDownwardFill from "@iconify/icons-eva/arrow-ios-downward-fill";
+import { useLocation } from "react-router-dom";
 // material
 import { styled } from "@mui/material/styles";
 import {
   Box,
   Link,
-  Grid,
-  List,
   Stack,
-  Popover,
-  ListItem,
-  ListSubheader,
-  CardActionArea,
 } from "@mui/material";
 
 // ----------------------------------------------------------------------
@@ -31,17 +21,6 @@ const LinkStyle = styled(Link)(({ theme }) => ({
   "&:hover": {
     opacity: 0.48,
     textDecoration: "none",
-  },
-}));
-
-const ListItemStyle = styled(ListItem)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: 0,
-  marginTop: theme.spacing(3),
-  color: theme.palette.text.secondary,
-  transition: theme.transitions.create("color"),
-  "&:hover": {
-    color: theme.palette.text.primary,
   },
 }));
 
@@ -84,7 +63,7 @@ MenuDesktopItem.propTypes = {
 };
 
 function MenuDesktopItem({ item, isHome }) {
-  const { title, path, iconDev, icon } = item;
+  const { path, icon } = item;
 
   return (
     <LinkStyle

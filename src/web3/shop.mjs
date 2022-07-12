@@ -1,9 +1,7 @@
 import {
   FIFA_TOKEN,
   FIFA_SALE,
-  FIFA_NFT,
   AMOUNT_APPROVE,
-  BASE_URL,
 } from "./../const/const";
 import { FIFA_TOKEN_ABI, FIFA_SALE_ABI } from "./abi.mjs";
 import { genContract, approve, allowance } from "./utils.mjs";

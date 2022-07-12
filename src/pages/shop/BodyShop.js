@@ -4,7 +4,6 @@ import ICON_FF from "./../../assets/shop/icon-token-fifa-mini.png";
 import { buyCard } from "./../../web3/shop.mjs";
 import meta from "./../../context/Provider";
 import {
-  CHAIN_ID,
   TOP_10_PRICE,
   TOP_20_PRICE,
   TOP_30_PRICE,
@@ -28,15 +27,6 @@ import TOP50 from "./../../assets/shop-1/50.png";
 import TOP100 from "./../../assets/shop-1/100.png";
 import TOP200 from "./../../assets/shop-1/200.png";
 import ALL from "./../../assets/shop-1/all.png";
-
-import {
-  getPriceTop10,
-  getPriceTop20,
-  getPriceTop30,
-  getPriceTop50,
-  getPriceTop100,
-  getPriceTop200,
-} from "./../../web3/shop.mjs";
 
 import { ModalBuy } from "./modal";
 
