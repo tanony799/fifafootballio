@@ -31,6 +31,9 @@ import MetaConnect from "./../../context/Provider";
 import styled2 from "styled-components";
 import { buyToken } from "./../../web3/ido.mjs";
 import { getBalanceBUSD } from "./../../web3/ido.mjs";
+import { getBalanceFIFA } from "./../../web3/shop.mjs";
+import { PRICE_IDO } from "./../../const/const";
+import { CountDown } from "./../../components/countDown/countdown";
 
 const BtnBuy = styled2.div`
  &: hover {
@@ -47,9 +50,9 @@ const RootStyle = styled(motion.div)(({ theme }) => ({
     top: 0,
     left: 0,
     width: "100%",
-    height: "100%",
+    minHeight: "100%",
     display: "flex",
-    position: "fixed",
+    // position: "fixed",
   },
 }));
 
@@ -208,6 +211,9 @@ export default function LayoutIdo() {
       setIsBuying(false);
       getBalanceBUSD(_meta.web3, _meta.address).then((e) => {
         _meta.setBalanceBUSD(Number(e) / Math.pow(10, 18));
+      });
+      getBalanceFIFA(_meta.web3, _meta.address).then((e) => {
+        _meta.setBalanceFF(Number(e) / Math.pow(10, 18));
       });
     } catch (error) {
       console.log(error);
@@ -392,7 +398,7 @@ export default function LayoutIdo() {
                             textDecoration: "none !important",
                           }}
                         >
-                          {"INTRODUCTION"}
+                          {"WHITEPP"}
                         </Typography>
                       </a>
                     </MenuItemStyle>
@@ -401,7 +407,8 @@ export default function LayoutIdo() {
               </Grid>
             </MHidden>
 
-            <Grid key={"NFT-Info"} item xs={12} md={8} mt={3}>
+            <Grid key={"NFT-Info"} item xs={12} md={8} mt={3} style={{paddingBottom: 100}}>
+              <CountDown />
               <MotionInView variants={varFadeInUp}>
                 <CardInfoStyle>
                   <FormContainer>
@@ -420,11 +427,12 @@ export default function LayoutIdo() {
                           fontSize: 20,
                           width: "100%",
                           fontWeight: "bold",
+                          color: "#86c540",
                           font: "normal normal bold 20px Poppins",
                           textAlign: "left",
                         }}
                       >
-                        {"Amount"}
+                        {`Total: ${_meta.balanceFF.toFixed(1)} FIFA`}
                       </Typography>
                       <Typography
                         style={{
@@ -494,7 +502,7 @@ export default function LayoutIdo() {
                           textAlign: "right",
                         }}
                       >
-                        {`1 FIFA ≈ $0.06`}
+                        {`1 FIFA ≈ ${PRICE_IDO}$`}
                       </Typography>
                     </AmountTranferContainer>
                     {renderBtnAction({
@@ -532,7 +540,8 @@ export default function LayoutIdo() {
           </Grid>
         </Container>
       </RootStyle>
-      <Box sx={{ height: { md: "100vh" } }} />
+      {/* <Box sx={{ height: { md: "100vh" } }} /> */}
+      {/* <Box /> */}
     </>
   );
 }

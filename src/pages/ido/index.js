@@ -3,12 +3,12 @@ import Page from "../../components/Page";
 import LayoutIdo from "./LayoutIdo"
 
 const RootStyle = styled(Page)({
-  height: "100%",
+  minHeight: "100% !important",
 });
 
 export default function IdoPage() {
   return (
-    <RootStyle title="FIFa Football" id="move_top">
+    <RootStyle title="FIFA Football" id="move_top">
       <LayoutIdo />
     </RootStyle>
   );

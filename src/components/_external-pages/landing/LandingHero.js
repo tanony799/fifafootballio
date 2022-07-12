@@ -438,7 +438,7 @@ export default function LandingHero() {
                             textDecoration: "none !important",
                           }}
                         >
-                          {"INTRODUCTION"}
+                          {"WHITEPP"}
                         </Typography>
                       </a>
                     </MenuItemStyle>

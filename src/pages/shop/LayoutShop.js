@@ -36,7 +36,7 @@ const RootStyle = styled(motion.div)(({ theme }) => ({
     top: 0,
     left: 0,
     width: "100%",
-    height: "100%",
+    minHeight: "100%",
     display: "flex",
     position: "fixed",
   },
@@ -245,7 +245,7 @@ export default function LayoutIdo() {
                             textDecoration: "none !important",
                           }}
                         >
-                          {"INTRODUCTION"}
+                          {"WHITEPP"}
                         </Typography>
                       </a>
                     </MenuItemStyle>

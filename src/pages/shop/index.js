@@ -8,7 +8,7 @@ const RootStyle = styled(Page)({
 
 export default function IdoPage() {
   return (
-    <RootStyle title="FIFa Football" id="move_top">
+    <RootStyle title="FIFA Football" id="move_top">
       <LayoutIdo />
     </RootStyle>
   );
