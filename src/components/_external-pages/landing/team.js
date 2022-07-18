@@ -92,7 +92,7 @@ const Team = () => {
             <WrapperItem>
               <ResponsiveImg src={I10} />
               <Text1 className="name-team">THOMASFULL</Text1>
-              <Text2 className="content-team">STACK DEVELOPER</Text2>
+              <Text2 className="content-team">FULLSTACK DEVELOPER</Text2>
             </WrapperItem>
           </div>
         </div>

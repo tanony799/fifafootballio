@@ -38,8 +38,6 @@ export default function Router() {
       element: <MainLayout />,
       children: [
         { element: <LandingPage /> },
-        // { path: 'ido', element: <IdoPage /> },
-        // { path: 'shop-t-bsc-1102', element: <ShopPage /> },
         { path: '404', element: <NotFound /> },
       ]
     },
